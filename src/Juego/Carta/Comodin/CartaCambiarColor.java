@@ -1,10 +1,9 @@
 package Juego.Carta.Comodin;
 
 public class CartaCambiarColor extends CartaComodin {
+    private static final String tipo = "C";
     public CartaCambiarColor() {
-    }
-    public CartaCambiarColor(char colorSeleccionado, String tipo) {
-        super(colorSeleccionado, tipo);
+        super(CartaCambiarColor.tipo);
     }
 
     @Override

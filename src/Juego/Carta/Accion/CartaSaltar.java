@@ -1,9 +1,10 @@
 package Juego.Carta.Accion;
 
 public class CartaSaltar extends CartaAccion {
+    private static final String tipo = "S";
     public CartaSaltar() {
     }
-    public CartaSaltar(char color, String tipo) {
+    public CartaSaltar(char color) {
         super(color, tipo);
     }
 

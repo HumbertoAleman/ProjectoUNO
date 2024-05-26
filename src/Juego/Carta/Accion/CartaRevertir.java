@@ -1,10 +1,11 @@
 package Juego.Carta.Accion;
 
 public class CartaRevertir extends CartaAccion {
+    private static final String tipo = "R";
     public CartaRevertir() {
     }
-    public CartaRevertir(char color, String tipo) {
-        super(color, tipo);
+    public CartaRevertir(char color) {
+        super(color, CartaRevertir.tipo);
     }
 
     @Override

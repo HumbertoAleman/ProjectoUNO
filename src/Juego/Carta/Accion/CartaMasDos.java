@@ -1,10 +1,11 @@
 package Juego.Carta.Accion;
 
 public class CartaMasDos extends CartaAccion {
+    private static final String tipo = "T2";
     public CartaMasDos() {
     }
-    public CartaMasDos(char color, String tipo) {
-        super(color, tipo);
+    public CartaMasDos(char color) {
+        super(color, CartaMasDos.tipo);
     }
 
     @Override

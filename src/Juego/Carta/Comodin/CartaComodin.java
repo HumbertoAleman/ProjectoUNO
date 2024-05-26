@@ -8,8 +8,7 @@ public abstract class CartaComodin implements Carta {
 
     public CartaComodin() {
     }
-    public CartaComodin(char colorSeleccionado, String tipo) {
-        this.colorSeleccionado = colorSeleccionado;
+    public CartaComodin(String tipo) {
         this.tipo = tipo;
     }
     

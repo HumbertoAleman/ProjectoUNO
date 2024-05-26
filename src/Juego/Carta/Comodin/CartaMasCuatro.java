@@ -1,10 +1,9 @@
 package Juego.Carta.Comodin;
 
 public class CartaMasCuatro extends CartaComodin {
+    private static final String tipo = "T4";
     public CartaMasCuatro() {
-    }
-    public CartaMasCuatro(char colorSeleccionado, String tipo) {
-        super(colorSeleccionado, tipo);
+        super(CartaMasCuatro.tipo);
     }
 
     @Override
