@@ -11,4 +11,5 @@ public interface Carta {
 
     public char getColor();
     public String getTipo();
+    public void mostrarCarta();
 }
