@@ -43,9 +43,6 @@ public class PilaTomar {
     }
 
     public Carta tomarCarta() {
-        return null;
-    }
-    public Carta tomarCarta() {
         return listaCartas.isEmpty() ? null : listaCartas.pop();
     }
 
