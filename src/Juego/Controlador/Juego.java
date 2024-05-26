@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Juego {
-    private ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
+    private static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
 
-    private int cartasATomar;
-    private boolean saltarTurno;
-    private boolean cartaReverso;
-    private boolean direccionPositiva;
+    private static int cartasATomar;
+    private static boolean saltarTurno;
+    private static boolean cartaReverso;
+    private static boolean direccionPositiva;
 
     public static void mostrarMenu() {
         System.out.println("----------------------------------");
@@ -46,7 +46,7 @@ public class Juego {
         return false;
     }
 
-    public void iniciarJuego() {
+    public static void iniciarJuego() {
         // Se instancian las cartas y se meten en la pila tomar
 
         // NOTA: Crear un for loop para instanciarlas, no estamos locos
@@ -68,7 +68,7 @@ public class Juego {
         // Comienza el loop del juego en si, iniciando con el jugador humano
     }
 
-    public boolean validar(Carta cartaAJugar) {
+    public static boolean validar(Carta cartaAJugar) {
         // Si la carta es T4, siempre se juega
 
         // Si las cartas a tomar es mayor a 0, solo se puede jugar una carta de T2 (el caso de T4 ya fue cubierto)
@@ -82,7 +82,7 @@ public class Juego {
         return false;
     }
 
-    public boolean loopJuego() {
+    public static boolean loopJuego() {
         // El loop de juego tiene tres partes
 
         // 1.1- Revisar si se salta el turno, si es el caso, simplemente saltar
