@@ -45,5 +45,24 @@ public class PilaTomar {
     public Carta tomarCarta() {
         return null;
     }
+    public Carta tomarCarta() {
+        return listaCartas.isEmpty() ? null : listaCartas.pop();
+    }
 
+    public void tomarCartas(Jugador jugador, int n) {
+        for (int i = 0; i < n; i++) {
+            if (!listaCartas.isEmpty()) {
+                Carta carta = tomarCarta();
+                jugador.agregarCarta(carta);
+            } else {
+                System.out.println("No hay más cartas en la pila para tomar.");
+                break;
+            }
+        }
+    }
+    public void repartirCartas(List<Jugador> jugadores) {
+        for (Jugador jugador : jugadores) {
+            tomarCartas(jugador, 7);
+        }
+    }
 }
