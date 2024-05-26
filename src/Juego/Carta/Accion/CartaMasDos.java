@@ -1,5 +1,7 @@
 package Juego.Carta.Accion;
 
+import Juego.Controlador.Juego;
+
 public class CartaMasDos extends CartaAccion {
     private static final String tipo = "T2";
     public CartaMasDos() {
@@ -10,7 +12,7 @@ public class CartaMasDos extends CartaAccion {
 
     @Override
     public void ejecutarAccion() {
-        System.out.println("Accion de la carta mas dos");
+        Juego.setCartasATomar(Juego.getCartasATomar() + 2);
     }
 
     @Override

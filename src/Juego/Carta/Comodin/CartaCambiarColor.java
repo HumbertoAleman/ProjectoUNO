@@ -18,6 +18,6 @@ public class CartaCambiarColor extends CartaComodin {
 
     @Override
     public void mostrarCarta(){
-        System.out.print(this.getColorSeleccionado() + this.tipo + "  ");
+        System.out.print(this.getColor() + this.tipo + "  ");
     }
 }

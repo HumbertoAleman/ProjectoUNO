@@ -1,8 +1,6 @@
 package Juego.Controlador;
 
 import Juego.Carta.Carta;
-import Juego.Carta.Comodin.CartaComodin;
-import Juego.Carta.Pila.PilaTomar;
 import Juego.Jugador.Jugador;
 
 import java.util.ArrayList;
@@ -13,7 +11,6 @@ public class Juego {
 
     private static int cartasATomar;
     private static boolean saltarTurno;
-    private static boolean cartaReverso;
     private static boolean direccionPositiva;
 
     public static void mostrarMenu() {
@@ -104,5 +101,41 @@ public class Juego {
         // encuentra en las clases hijas)
 
         return false;
+    }
+
+    public final static void limpiarConsola() {
+        try {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows"))
+                Runtime.getRuntime().exec("cls");
+            else
+                Runtime.getRuntime().exec("clear");
+        }
+        catch (final Exception e) { }
+    }
+
+    public static int getCartasATomar() {
+        return cartasATomar;
+    }
+
+    public static void setCartasATomar(int cartasATomar) {
+        Juego.cartasATomar = cartasATomar;
+    }
+
+    public static boolean isSaltarTurno() {
+        return saltarTurno;
+    }
+
+    public static void setSaltarTurno(boolean saltarTurno) {
+        Juego.saltarTurno = saltarTurno;
+    }
+
+    public static boolean isDireccionPositiva() {
+        return direccionPositiva;
+    }
+
+    public static void setDireccionPositiva(boolean direccionPositiva) {
+        Juego.direccionPositiva = direccionPositiva;
     }
 }

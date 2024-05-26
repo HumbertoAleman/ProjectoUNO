@@ -1,5 +1,7 @@
 package Juego.Carta.Accion;
 
+import Juego.Controlador.Juego;
+
 public class CartaSaltar extends CartaAccion {
     private static final String tipo = "S";
     public CartaSaltar() {
@@ -10,7 +12,7 @@ public class CartaSaltar extends CartaAccion {
 
     @Override
     public void ejecutarAccion() {
-        System.out.println("Accion carta saltar");
+        Juego.setSaltarTurno(true);
     }
 
     @Override

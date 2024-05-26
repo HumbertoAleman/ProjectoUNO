@@ -17,7 +17,7 @@ public class CartaNumerica extends CartaColorada {
 
     @Override
     public void ejecutarAccion() {
-        // NOTA: La accion de las cartas numericas sera cambiar el
+        // Las cartas numericas no tienen accion
     }
 
     @Override

@@ -1,5 +1,7 @@
 package Juego.Carta.Accion;
 
+import Juego.Controlador.Juego;
+
 public class CartaRevertir extends CartaAccion {
     private static final String tipo = "R";
     public CartaRevertir() {
@@ -10,7 +12,10 @@ public class CartaRevertir extends CartaAccion {
 
     @Override
     public void ejecutarAccion() {
-        System.out.println("Accion carta revertir");
+        /* TODO: Falta hacer un checkeo de si la cantidad de jugadores es == 2, en ese caso no cambiar la direccion
+         * sino activar el efecto de saltar turno
+         */
+        Juego.setDireccionPositiva(!Juego.isDireccionPositiva());
     }
 
     @Override
