@@ -10,6 +10,7 @@ import Juego.Jugador.Humano;
 import Juego.Jugador.Jugador;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Juego {
@@ -28,6 +29,10 @@ public class Juego {
         if (!pilaJugar.validarCarta(carta)) return false;
         pilaJugar.jugarCarta(carta);
         return true;
+    }
+
+    public static void darCartas(Jugador jugador) {
+        pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
     }
 
     private static int cartasATomar;

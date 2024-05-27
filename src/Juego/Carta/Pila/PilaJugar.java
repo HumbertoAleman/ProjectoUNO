@@ -11,6 +11,9 @@ public class PilaJugar {
     private final Stack<Carta> listaCartas = new Stack<Carta>();
 
     public boolean validarCarta(Carta carta) {
+        if (carta == null)
+            return false;
+
         if (Objects.equals(carta.getTipo(), "T4"))
             return true;
 
