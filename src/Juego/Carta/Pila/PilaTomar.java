@@ -7,8 +7,10 @@ import Juego.Carta.Carta;
 import Juego.Carta.CartaNumerica;
 import Juego.Carta.Comodin.CartaCambiarColor;
 import Juego.Carta.Comodin.CartaMasCuatro;
+import Juego.Jugador.Jugador;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class PilaTomar {
