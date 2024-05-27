@@ -10,4 +10,6 @@ public abstract class Jugador {
                 if (carta == null) return;
                 mazo.add(carta);
         }
+
+        public abstract void tomarTurno();
 }
