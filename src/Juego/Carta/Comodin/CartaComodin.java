@@ -3,6 +3,7 @@ package Juego.Carta.Comodin;
 import Juego.Carta.Carta;
 import Juego.Controlador.Juego;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public abstract class CartaComodin implements Carta {
@@ -24,6 +25,13 @@ public abstract class CartaComodin implements Carta {
     }
 
     protected void changeColor() {
+        if (Juego.jugadorEsCPU()) {
+            Random rand = new Random();
+            final String colores = "RBYG";
+            this.colorSeleccionado = colores.charAt(rand.nextInt() % colores.length());
+            return;
+        }
+
         Scanner scanner = new Scanner(System.in);
         while(this.colorSeleccionado == 'C') {
             Juego.limpiarConsola();

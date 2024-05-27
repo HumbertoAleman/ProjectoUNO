@@ -24,6 +24,12 @@ public class Juego {
     private static PilaTomar pilaTomar;
     private static PilaJugar pilaJugar;
 
+    public static boolean jugarCarta(Carta carta) {
+        if (!pilaJugar.validarCarta(carta)) return false;
+        pilaJugar.jugarCarta(carta);
+        return true;
+    }
+
     private static int cartasATomar;
     private static boolean saltarTurno;
     private static boolean direccionPositiva;
@@ -138,5 +144,9 @@ public class Juego {
 
     public static void setDireccionPositiva(boolean direccionPositiva) {
         Juego.direccionPositiva = direccionPositiva;
+    }
+
+    public static boolean jugadorEsCPU() {
+        return false;
     }
 }
