@@ -16,6 +16,11 @@ public class Juego {
     // Deberiamos cambiar esto a su propia clase para poder controlarlo mejor
     // Como hicimos con pilarTomar y pilaJugar
     private static ArrayList<Jugador> listaJugadores;
+    public static int getNumeroJugadores() {
+        if (listaJugadores == null) return 0;
+        return listaJugadores.size();
+    }
+
     private static PilaTomar pilaTomar;
     private static PilaJugar pilaJugar;
 

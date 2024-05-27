@@ -12,9 +12,10 @@ public class CartaRevertir extends CartaAccion {
 
     @Override
     public void ejecutarAccion() {
-        /* TODO: Falta hacer un checkeo de si la cantidad de jugadores es == 2, en ese caso no cambiar la direccion
-         * sino activar el efecto de saltar turno
-         */
+        if (Juego.getNumeroJugadores() == 2){
+            Juego.setSaltarTurno(true);
+            return;
+        }
         Juego.setDireccionPositiva(!Juego.isDireccionPositiva());
     }
 
