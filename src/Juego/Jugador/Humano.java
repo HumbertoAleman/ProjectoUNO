@@ -12,7 +12,7 @@ public class Humano extends Jugador {
         Carta cartaSeleccionada = null;
         String seleccion = "";
 
-        while (!Juego.jugarCarta(cartaSeleccionada) || seleccion.equals("T")) {
+        while (!Juego.jugarCarta(cartaSeleccionada) && !seleccion.equals("T")) {
             for (Carta carta : mazo) {
                 // TODO: Hacer una mejor manera de mostrar el mazo del jugador
                 // Probablemente tambien tengamos que extraer mazo a una clase externa
