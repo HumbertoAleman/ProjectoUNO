@@ -1,13 +1,23 @@
 package Juego.Controlador;
 
+import Juego.Carta.Accion.CartaAccion;
 import Juego.Carta.Carta;
+import Juego.Carta.Comodin.CartaComodin;
+import Juego.Carta.Pila.PilaJugar;
+import Juego.Carta.Pila.PilaTomar;
+import Juego.Jugador.Computador;
+import Juego.Jugador.Humano;
 import Juego.Jugador.Jugador;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Juego {
-    private static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
+    // Deberiamos cambiar esto a su propia clase para poder controlarlo mejor
+    // Como hicimos con pilarTomar y pilaJugar
+    private static ArrayList<Jugador> listaJugadores;
+    private static PilaTomar pilaTomar;
+    private static PilaJugar pilaJugar;
 
     private static int cartasATomar;
     private static boolean saltarTurno;
@@ -28,9 +38,9 @@ public class Juego {
         Scanner scanner = new Scanner(System.in);
         mostrarMenu();
 
-        switch(scanner.nextLine()) {
+        switch (scanner.nextLine()) {
             case "1":
-                // Comenzar juego
+                iniciarJuego();
                 break;
             case "2":
                 // Cargar juego
@@ -44,23 +54,23 @@ public class Juego {
     }
 
     public static void iniciarJuego() {
-        // Se instancian las cartas y se meten en la pila tomar
+        pilaTomar = new PilaTomar();
+        pilaJugar = new PilaJugar();
+        listaJugadores = new ArrayList<>();
 
-        // NOTA: Crear un for loop para instanciarlas, no estamos locos
-        // -- CARTAS COLORADAS --
-        // Dos cartas del 1 al 9 y una del 0
-        // 2 Cartas de accion c/u
-        // -- CARTAS COMODIN --
-        // 4 Cartas Cambiar Color
-        // 4 Cartas Toma Cuatro
+        pilaTomar.crearListaCartas(); // Este metodo crea las cartas dentro de la pila
 
-        // NOTA: probablemente se deba extraer la lista jugadores a una clase aparte
-        // Se instancian los jugadores y se meten aleatoriamente en la lista de jugadores,
+        listaJugadores.add(new Humano());
+        listaJugadores.add(new Computador());
+        pilaTomar.repartirCartas(listaJugadores); // Repartimos 7 cartas a c/u
 
-        // Luego de instanciarse las cartas y los jugadores, se reparten las cartasentre los jugadores, 7 cartas c/u
-
-        // NOTA: validar que la carta que se vaya a color en al pila jugar no sea un comodin
-        // Luego de repartirse, se toma la primera carta de la pila tomar, y se coloca en la pila jugar
+        Carta primeraCarta = null;
+        while (primeraCarta == null || primeraCarta instanceof CartaComodin || primeraCarta instanceof CartaAccion) {
+            // Juega una carta hasta que NO sea o comodin o accion
+            primeraCarta = pilaTomar.tomarCarta();
+            pilaJugar.jugarCarta(primeraCarta);
+            primeraCarta.mostrarCarta();
+        }
 
         // Comienza el loop del juego en si, iniciando con el jugador humano
     }
@@ -97,8 +107,8 @@ public class Juego {
                 Runtime.getRuntime().exec("cls");
             else
                 Runtime.getRuntime().exec("clear");
+        } catch (final Exception e) {
         }
-        catch (final Exception e) { }
     }
 
     public static int getCartasATomar() {
