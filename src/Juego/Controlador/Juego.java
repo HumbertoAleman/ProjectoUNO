@@ -65,20 +65,6 @@ public class Juego {
         // Comienza el loop del juego en si, iniciando con el jugador humano
     }
 
-    public static boolean validar(Carta cartaAJugar) {
-        // Si la carta es T4, siempre se juega
-
-        // Si las cartas a tomar es mayor a 0, solo se puede jugar una carta de T2 (el caso de T4 ya fue cubierto)
-        // Se revisa el color y pinta de la ultima carta para saber si se puede jugar
-
-        // Si las cartas a tomar son menores de 0, se revisa si la carta es un comodin, siempre se juega
-        // Si no es comodin, se revisa el color, si el color es igual, se juega
-        // Si el color es diferente, se revisa el tipo, si el tipo es igual se juega
-
-        // Si nada funciona retornar falso
-        return false;
-    }
-
     public static boolean loopJuego() {
         // El loop de juego tiene tres partes
 
