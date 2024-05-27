@@ -45,4 +45,6 @@ public class Humano extends Jugador {
 
         mazo.remove(cartaSeleccionada);
     }
+
+    public Humano(){};
 }
