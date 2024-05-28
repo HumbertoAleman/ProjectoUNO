@@ -4,6 +4,7 @@ import Juego.Carta.Carta;
 import Juego.Controlador.Juego;
 
 import java.util.Scanner;
+import java.util.Timer;
 
 public class Humano extends Jugador {
     @Override
@@ -46,5 +47,21 @@ public class Humano extends Jugador {
         mazo.remove(cartaSeleccionada);
     }
 
+
+    //Calcula el tiempo desde que se ejecuta la funcion hasta que se recibe la entrada del usuario
+    //Si es menor a 3 segundos es considerado valido y retorna true
+    public boolean cantarUno(){
+        Scanner scanner = new Scanner(System.in);
+        long tiempoInicio = System.currentTimeMillis();
+        System.out.println("Es momento de cantar UNO!\nPresiona la tecla U rapido!");
+        if(scanner.nextLine().equals("U")){
+            long tiempoFinal = System.currentTimeMillis();
+            return (tiempoFinal - tiempoInicio) <=3000;
+        }else{
+            return false;
+        }
+
+
+    }
     public Humano(){};
 }
