@@ -12,8 +12,9 @@ public class Computador extends Jugador {
             if (Juego.jugarCarta(carta)) {
                 carta.ejecutarAccion();
                 mazo.remove(carta);
-                break;
+                return;
             }
         }
+        Juego.darCartas(this);
     }
 }
