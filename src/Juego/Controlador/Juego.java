@@ -91,6 +91,16 @@ public class Juego {
         // El loop de juego tiene tres partes
 
         // 1.1- Revisar si se salta el turno, si es el caso, simplemente saltar
+        if (saltarTurno){
+            listaJugadores.siguienteJugador();
+        }
+        if(cartasATomar >0 ){
+            //Necesitamos cambiar el metodo tomarTurno de Humano para poder implementar esto
+            //debidamente y esconder en el caso de que cartasATomar sea 0.
+        }
+        if(!direccionPositiva&&listaJugadores.size() == 2){
+            listaJugadores.siguienteJugador();
+        }
         // 1.2- Revisar si cartas a tomar es mayor a 0, si es mayor a 0 presentar la opcion de tomarlas
         // y esconder la opcion de tomar de la pila
         // 1.3- Revisar si el reverso esta activo, si la cantidad de jugadores es = 2, saltar turno, else
@@ -100,6 +110,8 @@ public class Juego {
         // 2.0 - Aqui es donde guardamos el juego, antes de que el usuario pueda seleccionar una carta
         // 2.1 - tomar input del jugador, presentar opciones para
         // Jugar carta
+        listaJugadores.jugadorActualTurno();
+
         // SI EL CARTAS A TOMAR ES MENOR A 1, Tomar carta de pila
         // SI EL CARTAS A TOMAR ES MAYOR A 0, tomar las cartas necesarias, y perder el turno
 
