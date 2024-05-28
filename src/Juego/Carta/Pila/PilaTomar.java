@@ -54,7 +54,17 @@ public class PilaTomar {
                 Carta carta = tomarCarta();
                 jugador.agregarCarta(carta);
             } else {
-                System.out.println("No hay más cartas en la pila para tomar.");
+                /*
+                int size = pilaJugar.size();
+                Carta carta = null;
+                for (int i = 0; i < size - 1; i++) {
+                    carta = pilaJugar.get(i);
+                    if(carta instanceof CartaComodin)
+                        ((CartaComodin) carta).setColor('C');
+                    listaCartas.push(carta);
+                }
+                Collections.shuffle(listaCartas);
+                */
                 break;
             }
         }
