@@ -8,6 +8,8 @@ import Juego.Carta.Pila.PilaTomar;
 import Juego.Jugador.Jugador;
 import Juego.Jugador.Jugadores;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Juego {
@@ -31,6 +33,11 @@ public class Juego {
     public static void darCartas(Jugador jugador) {
         pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
     }
+
+    public static List<Carta> getCartasPorDebajo() {
+        return pilaJugar.getCartasPorDebajo();
+    }
+
 
     private static int cartasATomar;
     private static boolean saltarTurno;

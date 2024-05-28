@@ -7,6 +7,7 @@ import Juego.Carta.Carta;
 import Juego.Carta.CartaNumerica;
 import Juego.Carta.Comodin.CartaCambiarColor;
 import Juego.Carta.Comodin.CartaMasCuatro;
+import Juego.Controlador.Juego;
 import Juego.Jugador.Jugador;
 
 import java.util.Collections;
@@ -50,23 +51,10 @@ public class PilaTomar {
 
     public void tomarCartas(Jugador jugador, int n) {
         for (int i = 0; i < n; i++) {
-            if (!listaCartas.isEmpty()) {
-                Carta carta = tomarCarta();
-                jugador.agregarCarta(carta);
-            } else {
-                /*
-                int size = pilaJugar.size();
-                Carta carta = null;
-                for (int i = 0; i < size - 1; i++) {
-                    carta = pilaJugar.get(i);
-                    if(carta instanceof CartaComodin)
-                        ((CartaComodin) carta).setColor('C');
-                    listaCartas.push(carta);
-                }
-                Collections.shuffle(listaCartas);
-                */
-                break;
-            }
+            if (listaCartas.isEmpty())
+                listaCartas.addAll(Juego.getCartasPorDebajo());
+            Carta carta = tomarCarta();
+            jugador.agregarCarta(carta);
         }
     }
     public List<Jugador> repartirCartas(List<Jugador> jugadores) {
