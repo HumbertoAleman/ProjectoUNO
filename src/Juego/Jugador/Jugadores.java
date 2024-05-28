@@ -27,21 +27,15 @@ public class Jugadores {
         listaJugadores.add(jugadorHumano);
         listaJugadores.add(jugadorComputador);
 
-        PilaTomar pilaTomar = new PilaTomar();
-        pilaTomar.crearListaCartas();
-        this.listaJugadores = pilaTomar.repartirCartas(listaJugadores);
+    }
+
+    public boolean validarJugadorHumano(Jugador jugador){
+        //true si es humano, false si es computador
+
+        return (jugador instanceof Humano);
     }
 
 
 
-    public Jugador validarJugadorActual(int index){
-        return listaJugadores.get(index);
-    }
 
-    public int getJugadorActual(Jugador jugador) {
-        for(Jugador jugadorABuscar: listaJugadores){
-            if(jugador == jugadorABuscar) return listaJugadores.indexOf(jugadorABuscar);
-        }
-        return 0;
-    }
 }
