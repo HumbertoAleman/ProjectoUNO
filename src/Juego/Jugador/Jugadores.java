@@ -10,7 +10,11 @@ import java.util.List;
 public class Jugadores {
     private List<Jugador> listaJugadores = new ArrayList<Jugador>();
 
+    private boolean order = true;
 
+    public void cambiarOrden(){
+        this.order = !order;
+    }
 
     public void instanciarJugadores(){
         /*for(int i =0; i>numeroHumanos; i++){
