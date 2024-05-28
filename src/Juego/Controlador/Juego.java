@@ -5,18 +5,15 @@ import Juego.Carta.Carta;
 import Juego.Carta.Comodin.CartaComodin;
 import Juego.Carta.Pila.PilaJugar;
 import Juego.Carta.Pila.PilaTomar;
-import Juego.Jugador.Computador;
-import Juego.Jugador.Humano;
 import Juego.Jugador.Jugador;
+import Juego.Jugador.Jugadores;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Juego {
     // Deberiamos cambiar esto a su propia clase para poder controlarlo mejor
     // Como hicimos con pilarTomar y pilaJugar
-    private static ArrayList<Jugador> listaJugadores;
+    private static Jugadores listaJugadores;
     public static int getNumeroJugadores() {
         if (listaJugadores == null) return 0;
         return listaJugadores.size();
@@ -72,13 +69,12 @@ public class Juego {
     public static void iniciarJuego() {
         pilaTomar = new PilaTomar();
         pilaJugar = new PilaJugar();
-        listaJugadores = new ArrayList<>();
+        listaJugadores = listaJugadores;
 
         pilaTomar.crearListaCartas(); // Este metodo crea las cartas dentro de la pila
 
-        listaJugadores.add(new Humano());
-        listaJugadores.add(new Computador());
-        pilaTomar.repartirCartas(listaJugadores); // Repartimos 7 cartas a c/u
+        listaJugadores.instanciarJugadores();
+        pilaTomar.repartirCartas(listaJugadores.getListaJugadores()); // Repartimos 7 cartas a c/u
 
         Carta primeraCarta = null;
         while (primeraCarta == null || primeraCarta instanceof CartaComodin || primeraCarta instanceof CartaAccion) {

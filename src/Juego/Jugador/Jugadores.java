@@ -9,7 +9,11 @@ import java.util.List;
 
 public class Jugadores {
     private List<Jugador> listaJugadores = new ArrayList<Jugador>();
+    public List<Jugador> getListaJugadores() {
+        return this.listaJugadores;
+    }
 
+    private int index = 0;
     private boolean order = true;
 
     public void cambiarOrden(){
@@ -29,13 +33,25 @@ public class Jugadores {
 
     }
 
+    public void jugadorActualTurno() {
+        listaJugadores.get(index).tomarTurno();
+    }
+
+    public void siguienteJugador() {
+        if (order) {
+            index = (index + 1) % listaJugadores.size();
+            return;
+        }
+        index = (index - 1) % listaJugadores.size();
+    }
+
     public boolean validarJugadorHumano(Jugador jugador){
         //true si es humano, false si es computador
 
         return (jugador instanceof Humano);
     }
 
-
-
-
+    public int size() {
+        return listaJugadores.size();
+    }
 }
