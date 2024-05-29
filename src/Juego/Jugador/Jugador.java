@@ -5,7 +5,7 @@ import Juego.Carta.Carta;
 import java.util.LinkedList;
 
 public abstract class Jugador {
-        public LinkedList<Carta> mazo = new LinkedList<Carta>();
+        protected LinkedList<Carta> mazo = new LinkedList<Carta>();
         public void agregarCarta(Carta carta) {
                 if (carta == null) return;
                 mazo.add(carta);
@@ -16,6 +16,10 @@ public abstract class Jugador {
 
         }
         public abstract boolean cantarUno();
+
+        public int getCantidadDeCartas() {
+                return mazo.size();
+        }
 
         public abstract void tomarTurno();
 }

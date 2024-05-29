@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Juego {
     // Deberiamos cambiar esto a su propia clase para poder controlarlo mejor
     // Como hicimos con pilarTomar y pilaJugar
-    private static Jugadores listaJugadores;
+    private static Jugadores listaJugadores = new Jugadores();
     public static int getNumeroJugadores() {
         if (listaJugadores == null) return 0;
         return listaJugadores.size();
@@ -61,6 +61,7 @@ public class Juego {
         switch (scanner.nextLine()) {
             case "1":
                 iniciarJuego();
+                while(loopJuego()) { }
                 break;
             case "2":
                 // Cargar juego
@@ -88,46 +89,32 @@ public class Juego {
             // Juega una carta hasta que NO sea o comodin o accion
             primeraCarta = pilaTomar.tomarCarta();
             pilaJugar.jugarCarta(primeraCarta);
-            primeraCarta.mostrarCarta();
         }
 
         // Comienza el loop del juego en si, iniciando con el jugador humano
     }
 
     public static boolean loopJuego() {
-        // El loop de juego tiene tres partes
-
-        // 1.1- Revisar si se salta el turno, si es el caso, simplemente saltar
         if (saltarTurno){
             listaJugadores.siguienteJugador();
         }
-        if(cartasATomar >0 ){
-            //Necesitamos cambiar el metodo tomarTurno de Humano para poder implementar esto
-            //debidamente y esconder en el caso de que cartasATomar sea 0.
-        }
-        if(!direccionPositiva&&listaJugadores.size() == 2){
-            listaJugadores.siguienteJugador();
-        }
-        // 1.2- Revisar si cartas a tomar es mayor a 0, si es mayor a 0 presentar la opcion de tomarlas
-        // y esconder la opcion de tomar de la pila
-        // 1.3- Revisar si el reverso esta activo, si la cantidad de jugadores es = 2, saltar turno, else
-        // hacer que el indice de jugador -= 2, para seleccionar al jugador anterior al que jugo la carta, y
-        // cambiar la flag de reverso para que el indice no suba, sino baje
 
-        // 2.0 - Aqui es donde guardamos el juego, antes de que el usuario pueda seleccionar una carta
-        // 2.1 - tomar input del jugador, presentar opciones para
-        // Jugar carta
+        pilaJugar.mostrarCartaTope();
+        System.out.println();
+        // GUARDAR AQUI
         listaJugadores.jugadorActualTurno();
+        int cartas = listaJugadores.getNumCartasJugadorActual();
 
-        // SI EL CARTAS A TOMAR ES MENOR A 1, Tomar carta de pila
-        // SI EL CARTAS A TOMAR ES MAYOR A 0, tomar las cartas necesarias, y perder el turno
+        if (cartas == 1) {
+            // CANTAR UNO
+        } else if (cartas == 0) {
+            // FUNCION GANAR
+        }
 
-        // 3.1 - Si el jugador tiene una sola carta, presentar opcion para decir UNO
-        // 3.2 - Aplicar los efectos de las cartas acorde, esto se hace con la interfaz ejecutarAccion, esa funcion
-        // debe modificar los valores de Juego.java de acuerdo con la carta (la implementacion de la interfaz se
-        // encuentra en las clases hijas)
+        pilaJugar.usarEfectoDeCarta();
 
-        return false;
+        listaJugadores.siguienteJugador();
+        return true;
     }
 
     public final static void limpiarConsola() {
@@ -167,6 +154,6 @@ public class Juego {
     }
 
     public static boolean jugadorEsCPU() {
-        return false;
+        return listaJugadores.validarJugadorHumano();
     }
 }

@@ -10,6 +10,15 @@ import java.util.Stack;
 
 public class PilaJugar {
     private final Stack<Carta> listaCartas = new Stack<Carta>();
+    private boolean cartaFueJugada = false;
+    public void usarEfectoDeCarta() {
+        cartaFueJugada = false;
+        if (!cartaFueJugada) return;
+        listaCartas.peek().ejecutarAccion();
+    }
+    public void mostrarCartaTope() {
+        listaCartas.peek().mostrarCarta();
+    }
 
     public List<Carta> getCartasPorDebajo() {
         Carta primeraCarta = listaCartas.pop();
@@ -36,5 +45,6 @@ public class PilaJugar {
 
     public void jugarCarta(Carta carta) {
         listaCartas.push(carta);
+        cartaFueJugada = true;
     }
 }

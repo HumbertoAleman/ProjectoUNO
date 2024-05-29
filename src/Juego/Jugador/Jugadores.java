@@ -45,11 +45,14 @@ public class Jugadores {
         index = (index - 1) % listaJugadores.size();
     }
 
-    public boolean validarJugadorHumano(Jugador jugador){
-        //true si es humano, false si es computador
-
-        return (jugador instanceof Humano);
+    public boolean validarJugadorHumano(){
+        return (listaJugadores.get(index) instanceof Humano);
     }
+
+    public int getNumCartasJugadorActual() {
+        return listaJugadores.get(index).getCantidadDeCartas();
+    }
+
 
     public int size() {
         return listaJugadores.size();
