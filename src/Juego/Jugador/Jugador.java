@@ -11,5 +11,11 @@ public abstract class Jugador {
                 mazo.add(carta);
         }
 
+        public boolean validarUno(){
+            return mazo.size() == 1;
+
+        }
+        public abstract boolean cantarUno();
+
         public abstract void tomarTurno();
 }

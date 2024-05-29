@@ -17,4 +17,9 @@ public class Computador extends Jugador {
         }
         Juego.darCartas(this);
     }
+
+    @Override
+    public boolean cantarUno(){
+        return true;
+    }
 }
