@@ -3,6 +3,7 @@ package Juego.Jugador;
 import Juego.Carta.Carta;
 import Juego.Controlador.Juego;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.Timer;
 
@@ -58,10 +59,13 @@ public class Humano extends Jugador {
             long tiempoFinal = System.currentTimeMillis();
             return (tiempoFinal - tiempoInicio) <=3000;
         }else{
+            System.out.println("No lo hiciste a tiempo :(");
             return false;
         }
 
 
     }
     public Humano(){};
+
+
 }

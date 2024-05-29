@@ -20,6 +20,7 @@ public class Computador extends Jugador {
 
     @Override
     public boolean cantarUno(){
+        System.out.println("El COMPUTADOR CANTO UNO!");
         return true;
     }
 }

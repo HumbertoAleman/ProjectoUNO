@@ -107,7 +107,9 @@ public class Juego {
         int cartas = listaJugadores.getNumCartasJugadorActual();
 
         if (cartas == 1) {
-            // CANTAR UNO
+            if(!listaJugadores.jugadorActualCantarUno()){
+                pilaTomar.tomarCartas(listaJugadores.jugadorActual(), 7);
+            }
         } else if (cartas == 0) {
             // FUNCION GANAR
             return false;
