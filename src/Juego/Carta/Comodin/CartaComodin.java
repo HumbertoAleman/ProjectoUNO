@@ -10,10 +10,17 @@ public abstract class CartaComodin implements Carta {
     private char colorSeleccionado = 'C';
     public char getColor() { return colorSeleccionado; }
     protected String tipo;
+    /**
+     * Constructor de la carta comodin
+     * @param tipo tipo de la carta
+     */
     public CartaComodin(String tipo) {
         this.tipo = tipo;
     }
-
+    /**
+     * Obtiene el tipo de la carta
+     * @return tipo de la carta
+     */
     private static void cambiarColorDialogo() {
         System.out.println("Colores: ");
         System.out.println("R. Rojo");
@@ -23,7 +30,9 @@ public abstract class CartaComodin implements Carta {
         System.out.println();
         System.out.print("Ingrese el color a jugar: ");
     }
-
+    /**
+     * Ejecuta la accion de la carta
+     */
     protected void changeColor() {
         if (!Juego.jugadorEsHumano()) {
             Random rand = new Random();

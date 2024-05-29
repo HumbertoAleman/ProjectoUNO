@@ -16,14 +16,21 @@ import java.util.Stack;
 
 public class PilaTomar {
     private Stack<Carta> listaCartas = new Stack<>();
-
+    /**
+     * Constructor de la pila de cartas a tomar
+     */
     public PilaTomar() {
     }
-
+    /**
+     * Constructor de la pila de cartas a tomar
+     * @param listaCartas lista de cartas
+     */
     public PilaTomar(Stack<Carta> listaCartas) {
         this.listaCartas = listaCartas;
     }
-
+    /**
+     * crea una la lista de cartas
+     */
     public void crearListaCartas() {
         for (char color : "BRYG".toCharArray()) {
             for (int j = 1; j < 20; j++)
@@ -40,15 +47,22 @@ public class PilaTomar {
         }
         shuffle(listaCartas);
     }
-
+    /**
+     * baraja las cartas
+     */
     public void shuffle(Stack<Carta> listaCartas) {
         Collections.shuffle(listaCartas);
     }
-
+    /**
+     * Toma una carta y se las da a un jugador
+     * @return lista de cartas
+     */
     public Carta tomarCarta() {
         return listaCartas.isEmpty() ? null : listaCartas.pop();
     }
-
+    /**
+     * Toma las cartas y se las da a un jugador
+     */
     public void tomarCartas(Jugador jugador, int n) {
         for (int i = 0; i < n; i++) {
             if (listaCartas.isEmpty())
@@ -57,6 +71,11 @@ public class PilaTomar {
             jugador.agregarCarta(carta);
         }
     }
+    /**
+     * reparte 7 cartas a la lista de jugadores
+     * @param jugadores lista de jugadores
+     * @return lista de jugadores
+     */
     public List<Jugador> repartirCartas(List<Jugador> jugadores) {
         for (Jugador jugador : jugadores) {
             tomarCartas(jugador, 7);
