@@ -8,7 +8,6 @@ import Juego.Carta.Pila.PilaTomar;
 import Juego.Jugador.Jugador;
 import Juego.Jugador.Jugadores;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,6 +31,7 @@ public class Juego {
 
     public static void darCartas(Jugador jugador) {
         pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
+        if (cartasATomar > 0) cartasATomar = 0;
     }
 
     public static List<Carta> getCartasPorDebajo() {
@@ -97,6 +97,7 @@ public class Juego {
     public static boolean loopJuego() {
         if (saltarTurno){
             listaJugadores.siguienteJugador();
+            saltarTurno = false;
         }
 
         pilaJugar.mostrarCartaTope();
@@ -109,6 +110,7 @@ public class Juego {
             // CANTAR UNO
         } else if (cartas == 0) {
             // FUNCION GANAR
+            return false;
         }
 
         pilaJugar.usarEfectoDeCarta();
@@ -153,7 +155,7 @@ public class Juego {
         Juego.direccionPositiva = direccionPositiva;
     }
 
-    public static boolean jugadorEsCPU() {
+    public static boolean jugadorEsHumano() {
         return listaJugadores.validarJugadorHumano();
     }
 }

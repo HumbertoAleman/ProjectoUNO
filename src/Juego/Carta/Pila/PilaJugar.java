@@ -11,11 +11,13 @@ import java.util.Stack;
 public class PilaJugar {
     private final Stack<Carta> listaCartas = new Stack<Carta>();
     private boolean cartaFueJugada = false;
+
     public void usarEfectoDeCarta() {
-        cartaFueJugada = false;
         if (!cartaFueJugada) return;
+        cartaFueJugada = false;
         listaCartas.peek().ejecutarAccion();
     }
+
     public void mostrarCartaTope() {
         listaCartas.peek().mostrarCarta();
     }
@@ -35,8 +37,9 @@ public class PilaJugar {
         if (Objects.equals(carta.getTipo(), "T4"))
             return true;
 
-        if (Juego.getCartasATomar() > 0 && listaCartas.peek().getColor() == carta.getColor())
-           return true;
+        if (Juego.getCartasATomar() > 0)
+            return listaCartas.peek().getColor() == carta.getColor() &&
+                    carta.getTipo().equals("T2");
 
         return carta.getTipo().equals("C") ||
                 listaCartas.peek().getColor() == carta.getColor() ||

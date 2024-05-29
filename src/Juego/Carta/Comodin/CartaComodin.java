@@ -25,10 +25,10 @@ public abstract class CartaComodin implements Carta {
     }
 
     protected void changeColor() {
-        if (Juego.jugadorEsCPU()) {
+        if (!Juego.jugadorEsHumano()) {
             Random rand = new Random();
             final String colores = "RBYG";
-            this.colorSeleccionado = colores.charAt(rand.nextInt() % colores.length());
+            this.colorSeleccionado = colores.charAt(rand.nextInt(colores.length()));
             return;
         }
 

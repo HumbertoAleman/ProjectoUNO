@@ -10,7 +10,7 @@ public class Computador extends Jugador {
     public void tomarTurno() {
         for (Carta carta : mazo) {
             if (Juego.jugarCarta(carta)) {
-                carta.ejecutarAccion();
+                System.out.println("EL CPU JUGO");
                 mazo.remove(carta);
                 return;
             }
