@@ -11,17 +11,24 @@ import java.util.Stack;
 public class PilaJugar {
     private final Stack<Carta> listaCartas = new Stack<Carta>();
     private boolean cartaFueJugada = false;
-
+    /**
+     * Ejecuta la accion de la carta jugada
+     */
     public void usarEfectoDeCarta() {
         if (!cartaFueJugada) return;
         cartaFueJugada = false;
         listaCartas.peek().ejecutarAccion();
     }
-
+    /**
+     * Muestra la carta en el tope de la pila de jugar
+     */
     public void mostrarCartaTope() {
         listaCartas.peek().mostrarCarta();
     }
-
+    /**
+     * Pasa todas las cartas de la pila de jugar a la pila de jugar, menos el primer elemento, y la vacia
+     * @return Lista de cartas 
+     */
     public List<Carta> getCartasPorDebajo() {
         Carta primeraCarta = listaCartas.pop();
         LinkedList<Carta> cartasPorDebajo = new LinkedList<>(listaCartas);
@@ -29,7 +36,11 @@ public class PilaJugar {
         listaCartas.add(primeraCarta);
         return cartasPorDebajo;
     }
-
+    /**
+     * Valida si una carta se puede jugar
+     * @param carta una carta
+     * @return true si se puede jugar o false si no se puede jugar
+     */
     public boolean validarCarta(Carta carta) {
         if (carta == null)
             return false;
@@ -45,7 +56,10 @@ public class PilaJugar {
                 listaCartas.peek().getColor() == carta.getColor() ||
                 listaCartas.peek().getTipo().equals(carta.getTipo());
     }
-
+    /**
+     * Coloca una carta en la pila de jugar
+     * @param carta una carta
+     */
     public void jugarCarta(Carta carta) {
         listaCartas.push(carta);
         cartaFueJugada = true;

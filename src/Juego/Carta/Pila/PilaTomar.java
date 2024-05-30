@@ -62,6 +62,8 @@ public class PilaTomar {
     }
     /**
      * Toma las cartas y se las da a un jugador
+     * @param jugador un jugador
+     * @param n numero de cartas a tomar
      */
     public void tomarCartas(Jugador jugador, int n) {
         for (int i = 0; i < n; i++) {

@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 public abstract class CartaComodin implements Carta {
     private char colorSeleccionado = 'C';
+    /**
+     * Obtiene el color de la carta
+     * @return color de la carta
+     */
     public char getColor() { return colorSeleccionado; }
     protected String tipo;
     /**
@@ -18,8 +22,7 @@ public abstract class CartaComodin implements Carta {
         this.tipo = tipo;
     }
     /**
-     * Obtiene el tipo de la carta
-     * @return tipo de la carta
+     * Pregunta a que color quiere cambiar la carta
      */
     private static void cambiarColorDialogo() {
         System.out.println("Colores: ");
