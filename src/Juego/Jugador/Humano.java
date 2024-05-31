@@ -13,14 +13,9 @@ public class Humano extends Jugador {
         Scanner scanner = new Scanner(System.in);
         Carta cartaSeleccionada = null;
         String seleccion = "";
-
+        ImpresoraCarta impresoraCarta = new ImpresoraCarta();
         while (!Juego.jugarCarta(cartaSeleccionada) && !seleccion.equals("T")) {
-            for (Carta carta : mazo) {
-                // TODO: Hacer una mejor manera de mostrar el mazo del jugador
-                // Probablemente tambien tengamos que extraer mazo a una clase externa
-                carta.mostrarCarta();
-                System.out.print(", ");
-            }
+            impresoraCarta.mostrarMazo(mazo);
 
             System.out.println();
             if (Juego.getCartasATomar() > 0)

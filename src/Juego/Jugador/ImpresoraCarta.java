@@ -3,6 +3,7 @@ package Juego.Jugador;
 import Juego.Carta.Carta;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ImpresoraCarta {
     public static final String ANSI_RESET = "\u001B[0m";
@@ -14,7 +15,7 @@ public class ImpresoraCarta {
     public ImpresoraCarta(){};
 
 
-    public void mostrarMazo(ArrayList<Carta> cartas){
+    public void mostrarMazo(LinkedList<Carta> cartas){
         String cartaActual;
         char colorActual;
         String codigoAnsi;
@@ -61,6 +62,7 @@ public class ImpresoraCarta {
                     cartaActual = cartaActual + " ";
                 }
                 System.out.print("|"+codigoAnsi + cartaActual +ANSI_RESET+"|    ");
+                indiceCartaActual++;
             }
             System.out.println();
 
@@ -68,7 +70,7 @@ public class ImpresoraCarta {
                 if(j==sizeMazoCartas){
                     return;
                 }
-                System.out.println("+---+    ");
+                System.out.print("+---+    ");
             }
             System.out.println();
             sizeMazoCartas-=3;
