@@ -48,6 +48,9 @@ public class Jugadores {
     public boolean validarJugadorHumano(){
         return (listaJugadores.get(index) instanceof Humano);
     }
+    public boolean validarJugadorComputador(){
+        return (listaJugadores.get(index) instanceof Computador);
+    }
 
     public int getNumCartasJugadorActual() {
         return listaJugadores.get(index).getCantidadDeCartas();

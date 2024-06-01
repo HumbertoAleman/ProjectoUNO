@@ -102,7 +102,14 @@ public class Juego {
 
         pilaJugar.mostrarCartaTope();
         System.out.println();
-        // GUARDAR AQUI
+
+        // Llamada al método jugadorEsCPU
+        if (jugadorEsCPU()) {
+            System.out.println("El jugador actual es una CPU.");
+        } else {
+            System.out.println("El jugador actual es un humano.");
+        }
+
         listaJugadores.jugadorActualTurno();
         int cartas = listaJugadores.getNumCartasJugadorActual();
 
@@ -160,4 +167,8 @@ public class Juego {
     public static boolean jugadorEsHumano() {
         return listaJugadores.validarJugadorHumano();
     }
+    public static boolean jugadorEsCPU() {
+        return listaJugadores.validarJugadorComputador();
+    }
+
 }
