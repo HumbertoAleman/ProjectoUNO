@@ -23,7 +23,7 @@ public class ImpresoraCarta {
     }};
 
     public void mostrarMazo(LinkedList<Carta> cartas) {
-        final int cartasPorFila = 5;
+        final int cartasPorFila = 7;
         for (int fila = 0; fila < Math.ceil((double) cartas.size() / cartasPorFila); fila++) {
             for (int i = 0; i < Math.min(cartasPorFila, cartas.size() - fila * cartasPorFila); i++)
                 System.out.print("+---+    ");
