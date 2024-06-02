@@ -25,6 +25,7 @@ public class PilaJugar {
     public void mostrarCartaTope() {
         listaCartas.peek().mostrarCarta();
     }
+
     /**
      * Pasa todas las cartas de la pila de jugar a la pila de jugar, menos el primer elemento, y la vacia
      * @return Lista de cartas 
@@ -36,6 +37,7 @@ public class PilaJugar {
         listaCartas.add(primeraCarta);
         return cartasPorDebajo;
     }
+
     /**
      * Valida si una carta se puede jugar
      * @param carta una carta
