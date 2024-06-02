@@ -1,14 +1,10 @@
 package Juego.Jugador;
 
-import Juego.Carta.Pila.PilaTomar;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Jugadores {
-    private List<Jugador> listaJugadores = new ArrayList<Jugador>();
+    private final List<Jugador> listaJugadores = new ArrayList<>();
 
     public List<Jugador> getListaJugadores() {
         return this.listaJugadores;
