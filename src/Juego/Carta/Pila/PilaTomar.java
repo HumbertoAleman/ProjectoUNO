@@ -15,19 +15,14 @@ import java.util.List;
 import java.util.Stack;
 
 public class PilaTomar {
-    private Stack<Carta> listaCartas = new Stack<>();
     /**
      * Constructor de la pila de cartas a tomar
      */
     public PilaTomar() {
     }
-    /**
-     * Constructor de la pila de cartas a tomar
-     * @param listaCartas lista de cartas
-     */
-    public PilaTomar(Stack<Carta> listaCartas) {
-        this.listaCartas = listaCartas;
-    }
+
+    private final Stack<Carta> listaCartas = new Stack<>();
+
     /**
      * crea una la lista de cartas
      */
@@ -47,41 +42,44 @@ public class PilaTomar {
         }
         shuffle(listaCartas);
     }
+
     /**
      * baraja las cartas
      */
     public void shuffle(Stack<Carta> listaCartas) {
         Collections.shuffle(listaCartas);
     }
+
     /**
      * Toma una carta y se las da a un jugador
+     *
      * @return lista de cartas
      */
     public Carta tomarCarta() {
         return listaCartas.isEmpty() ? null : listaCartas.pop();
     }
+
     /**
      * Toma las cartas y se las da a un jugador
+     *
      * @param jugador un jugador
-     * @param n numero de cartas a tomar
+     * @param n       numero de cartas a tomar
      */
     public void tomarCartas(Jugador jugador, int n) {
         for (int i = 0; i < n; i++) {
-            if (listaCartas.isEmpty())
-                listaCartas.addAll(Juego.getCartasPorDebajo());
+            if (listaCartas.isEmpty()) listaCartas.addAll(Juego.getCartasPorDebajo());
             Carta carta = tomarCarta();
             jugador.agregarCarta(carta);
         }
     }
+
     /**
      * reparte 7 cartas a la lista de jugadores
+     *
      * @param jugadores lista de jugadores
-     * @return lista de jugadores
      */
-    public List<Jugador> repartirCartas(List<Jugador> jugadores) {
-        for (Jugador jugador : jugadores) {
+    public void repartirCartas(List<Jugador> jugadores) {
+        for (Jugador jugador : jugadores)
             tomarCartas(jugador, 7);
-        }
-        return jugadores;
     }
 }

@@ -9,8 +9,19 @@ import java.util.Objects;
 import java.util.Stack;
 
 public class PilaJugar {
-    private final Stack<Carta> listaCartas = new Stack<Carta>();
+    private final Stack<Carta> listaCartas = new Stack<>();
     private boolean cartaFueJugada = false;
+
+    /**
+     * Coloca una carta en la pila de jugar
+     *
+     * @param carta una carta
+     */
+    public void jugarCarta(Carta carta) {
+        listaCartas.push(carta);
+        cartaFueJugada = true;
+    }
+
     /**
      * Ejecuta la accion de la carta jugada
      */
@@ -19,6 +30,7 @@ public class PilaJugar {
         cartaFueJugada = false;
         listaCartas.peek().ejecutarAccion();
     }
+
     /**
      * Muestra la carta en el tope de la pila de jugar
      */
@@ -28,7 +40,8 @@ public class PilaJugar {
 
     /**
      * Pasa todas las cartas de la pila de jugar a la pila de jugar, menos el primer elemento, y la vacia
-     * @return Lista de cartas 
+     *
+     * @return Lista de cartas
      */
     public List<Carta> getCartasPorDebajo() {
         Carta primeraCarta = listaCartas.pop();
@@ -40,6 +53,7 @@ public class PilaJugar {
 
     /**
      * Valida si una carta se puede jugar
+     *
      * @param carta una carta
      * @return true si se puede jugar o false si no se puede jugar
      */
@@ -51,19 +65,12 @@ public class PilaJugar {
             return true;
 
         if (Juego.getCartasATomar() > 0)
-            return listaCartas.peek().getColor() == carta.getColor() &&
-                    carta.getTipo().equals("T2");
+            return listaCartas.peek().getColor() == carta.getColor() ||
+                    listaCartas.peek().getTipo().equals(carta.getTipo());
 
         return carta.getTipo().equals("C") ||
                 listaCartas.peek().getColor() == carta.getColor() ||
                 listaCartas.peek().getTipo().equals(carta.getTipo());
     }
-    /**
-     * Coloca una carta en la pila de jugar
-     * @param carta una carta
-     */
-    public void jugarCarta(Carta carta) {
-        listaCartas.push(carta);
-        cartaFueJugada = true;
-    }
+
 }
