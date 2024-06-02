@@ -16,63 +16,108 @@ public class Juego {
     }
 
     private static int cartasATomar;
-
+    /**
+     * Obtiene las cartas a tomar
+     * 
+     * @return cantidad de cartas
+     */
     public static int getCartasATomar() {
         return cartasATomar;
     }
-
+    /**
+     * Asigna la cantidad de cartas a tomar
+     *
+     * @param cartasATomar cartas a tomar
+     */
     public static void setCartasATomar(int cartasATomar) {
         Juego.cartasATomar = cartasATomar;
     }
 
     private static boolean saltarTurno;
-
+    /**
+     * Revisa si se debe saltar un turno
+     *
+     * @return true si hay que saltar un turno, false si no
+     */
     public static boolean isSaltarTurno() {
         return saltarTurno;
     }
-
+    /**
+     * Notifica si se debe de saltar el turno
+     *
+     * @param saltarTurno true si se debe saltar turno, false si no
+     */
     public static void setSaltarTurno(boolean saltarTurno) {
         Juego.saltarTurno = saltarTurno;
     }
-
+    /**
+     * Revierte el orden de jugadores
+     */
     public static void revertirOrden() {
         if (listaJugadores == null) return;
         listaJugadores.cambiarOrden();
     }
 
     private static Jugadores listaJugadores;
-
+    /**
+     * Obtiene la cantidad de jugadores en la partida
+     * 
+     * @return cantidad de jugadores
+     */
     public static int getNumeroJugadores() {
         return listaJugadores == null ? 0 : listaJugadores.size();
     }
-
+    /**
+     * Revisa si el jugador actual es humano
+     * 
+     * @return true si el jugador es humano, false si no
+     */
     public static boolean jugadorEsHumano() {
         return listaJugadores != null && listaJugadores.validarJugadorHumano();
     }
-
+    /**
+     * Revisa si el jugador actual es CPU
+     * 
+     * @return true si el jugador es CPU, false si no
+     */
     public static boolean jugadorEsCPU() {
         return listaJugadores != null && listaJugadores.validarJugadorComputador();
     }
 
     private static PilaTomar pilaTomar;
-
+    /**
+     * Le da cartas a un jugador
+     *
+     * @param jugador un jugador
+     */
     public static void darCartas(Jugador jugador) {
         pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
         cartasATomar = 0;
     }
 
     private static PilaJugar pilaJugar;
-
+    /**
+     * Revisa si la carta se puede jugar
+     *
+     * @param carta una carta
+     * @return true si se puede jugar la carta, false si no
+     */
     public static boolean jugarCarta(Carta carta) {
         if (!pilaJugar.validarCarta(carta)) return false;
         pilaJugar.jugarCarta(carta);
         return true;
     }
-
+    /**
+     * Obtiene las cartas de la Pila jugar menos la del tope
+     * 
+     * @return lista de cartas
+     */
     public static List<Carta> getCartasPorDebajo() {
         return pilaJugar.getCartasPorDebajo();
     }
-
+    /**
+     * Muestra el menu del juego
+     */
     public static void mostrarMenu() {
         System.out.println("----------------------------------");
         System.out.format("| %4s %25s |%n", "1.", "Comenzar juego");
@@ -83,7 +128,11 @@ public class Juego {
         System.out.println();
         System.out.print("Seleccion: ");
     }
-
+    /**
+     * Permite escoger una opcion del menu
+     * 
+     * @return true para volver a mostrar el menu, false para no
+     */
     public static boolean menuLoop() {
         Scanner scanner = new Scanner(System.in);
         mostrarMenu();
@@ -104,7 +153,9 @@ public class Juego {
         }
         return false;
     }
-
+    /**
+     * Instancia los objetos del juego
+     */
     public static void iniciarJuego() {
         listaJugadores = new Jugadores();
         pilaTomar = new PilaTomar();
@@ -125,7 +176,11 @@ public class Juego {
             pilaJugar.jugarCarta(primeraCarta);
         }
     }
-
+    /**
+     * Comienza el juego 
+     * 
+     * @return true para que se siga jugando el juego, false para no
+     */
     public static boolean loopJuego() {
         limpiarConsola();
         if (saltarTurno) {
@@ -153,7 +208,9 @@ public class Juego {
         listaJugadores.siguienteJugador();
         return true;
     }
-
+    /**
+     * Limpia la patalla
+     */
     public final static void limpiarConsola() {
         // Esto es probablemente lo mas tonto que he hecho en mis 3.5 semestres que he estado en esta universidad
         // pero me da demasiada flojera encontrar una manera de limpiar la consola en java.

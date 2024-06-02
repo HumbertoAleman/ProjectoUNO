@@ -2,7 +2,9 @@ package Juego.Controlador;
 
 public class Guardador {
     private Guardador() {}
-
+    /**
+     * Guarda la informacion del juego 
+     */
     public void guardarJuego() {
         // Guardamos la pila a tomar EN ORDEN
         // Guardamos la pila de juego EN ORDEN
