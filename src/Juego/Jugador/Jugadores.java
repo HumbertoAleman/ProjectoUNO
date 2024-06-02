@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Jugadores {
     private List<Jugador> listaJugadores = new ArrayList<Jugador>();
+
     public List<Jugador> getListaJugadores() {
         return this.listaJugadores;
     }
@@ -20,7 +21,7 @@ public class Jugadores {
         this.order = !order;
     }
 
-    public void instanciarJugadores(){
+    public void instanciarJugadores() {
         /*for(int i =0; i>numeroHumanos; i++){
             listaJugadores.add(new Humano());
         }*/
@@ -45,10 +46,11 @@ public class Jugadores {
         index = (index - 1) % listaJugadores.size();
     }
 
-    public boolean validarJugadorHumano(){
+    public boolean validarJugadorHumano() {
         return (listaJugadores.get(index) instanceof Humano);
     }
-    public boolean validarJugadorComputador(){
+
+    public boolean validarJugadorComputador() {
         return (listaJugadores.get(index) instanceof Computador);
     }
 
