@@ -23,19 +23,22 @@ public class ImpresoraCarta {
     }};
 
     public void mostrarMazo(LinkedList<Carta> cartas) {
-        for (int fila = 0; fila < Math.ceil(cartas.size() / 3.0); fila++) {
-            for (int i = 0; i < Math.min(3, cartas.size() - fila * 3); i++)
+        final int cartasPorFila = 5;
+        for (int fila = 0; fila < Math.ceil((double) cartas.size() / cartasPorFila); fila++) {
+            for (int i = 0; i < Math.min(cartasPorFila, cartas.size() - fila * cartasPorFila); i++)
                 System.out.print("+---+    ");
             System.out.println();
 
-            for (Carta cartaActual : cartas.subList(fila * 3, Math.min(fila * 3 + 3, cartas.size()))) {
+            int from = fila * cartasPorFila;
+            int to = Math.min(fila * cartasPorFila + cartasPorFila, cartas.size());
+            for (Carta cartaActual : cartas.subList(from, to)) {
                 String cartaMostrar = String.format("%-3s", cartaActual.getColor() + cartaActual.getTipo());
                 String codigoAnsi = colorMap.getOrDefault(cartaActual.getColor(), ANSI_WHITE);
                 System.out.print("|" + codigoAnsi + cartaMostrar + ANSI_RESET + "|    ");
             }
             System.out.println();
 
-            for (int i = 0; i < Math.min(3, cartas.size() - fila * 3); i++)
+            for (int i = 0; i < Math.min(cartasPorFila, cartas.size() - fila * cartasPorFila); i++)
                 System.out.print("+---+    ");
             System.out.println();
         }
