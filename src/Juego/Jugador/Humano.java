@@ -13,9 +13,9 @@ public class Humano extends Jugador {
         Scanner scanner = new Scanner(System.in);
         Carta cartaSeleccionada = null;
         String seleccion = "";
-        ImpresoraCarta impresoraCarta = new ImpresoraCarta();
+
         while (!Juego.jugarCarta(cartaSeleccionada) && !seleccion.equals("T")) {
-            impresoraCarta.mostrarMazo(mazo);
+            ImpresoraCarta.mostrarMazo(mazo, true);
 
             System.out.println();
             if (Juego.getCartasATomar() > 0)
