@@ -11,7 +11,9 @@ public class ImpresoraCarta {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_WHITE = "\u001B[37m";
-    public ImpresoraCarta() { };
+
+    public ImpresoraCarta() {
+    }
 
     private static final Map<Character, String> colorMap = new HashMap<Character, String>() {{
         put('B', ANSI_BLUE);
@@ -20,10 +22,9 @@ public class ImpresoraCarta {
         put('G', ANSI_GREEN);
     }};
 
-
-    public void mostrarMazo(LinkedList<Carta> cartas){
-        for (int fila = 0; fila < Math.ceil(cartas.size() / 3.0); fila++){
-            for(int i = 0; i < Math.min(3, cartas.size() - fila * 3); i++)
+    public void mostrarMazo(LinkedList<Carta> cartas) {
+        for (int fila = 0; fila < Math.ceil(cartas.size() / 3.0); fila++) {
+            for (int i = 0; i < Math.min(3, cartas.size() - fila * 3); i++)
                 System.out.print("+---+    ");
             System.out.println();
 
@@ -34,7 +35,7 @@ public class ImpresoraCarta {
             }
             System.out.println();
 
-            for(int i = 0; i < Math.min(3, cartas.size() - fila * 3); i++)
+            for (int i = 0; i < Math.min(3, cartas.size() - fila * 3); i++)
                 System.out.print("+---+    ");
             System.out.println();
         }
