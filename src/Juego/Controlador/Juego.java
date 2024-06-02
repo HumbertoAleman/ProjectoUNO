@@ -160,7 +160,10 @@ public class Juego {
         // Si alguien encuentra una manera de limpiar la consola de verdad, y que funcione tanto en mac
         // como en windows se lo agradeceria.
         // - Humberto Aleman
+
+        StringBuilder out = new StringBuilder();
         for (int i = 0; i < 30; i++)
-            System.out.println();
+            out.append("\n");
+        System.out.println(out);
     }
 }
