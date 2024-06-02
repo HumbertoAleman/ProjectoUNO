@@ -14,7 +14,7 @@ public class Computador extends Jugador {
             }
             Thread.sleep(500);
         } catch (Exception e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
         System.out.println();
     }
@@ -29,7 +29,7 @@ public class Computador extends Jugador {
                 try {
                     Thread.sleep(1500);
                 } catch (Exception e) {
-                    System.err.println(e);
+                    System.err.println(e.getMessage());
                 }
                 return;
             }
@@ -38,7 +38,7 @@ public class Computador extends Jugador {
         try {
             Thread.sleep(1500);
         } catch (Exception e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
         Juego.darCartas(this);
     }
