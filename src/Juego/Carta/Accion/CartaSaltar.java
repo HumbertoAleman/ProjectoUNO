@@ -29,7 +29,7 @@ public class CartaSaltar extends CartaAccion {
     }
 
     /**
-     * Obtiene el tipo de la carta
+     * Obtiene el tipo de la carta saltar
      *
      * @return tipo de la carta
      */

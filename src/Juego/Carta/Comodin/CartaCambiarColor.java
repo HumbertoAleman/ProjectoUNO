@@ -11,7 +11,7 @@ public class CartaCambiarColor extends CartaComodin {
     }
 
     /**
-     * Ejecuta la accion de la carta
+     * Ejecuta la accion de la carta cambiar color
      */
     @Override
     public void ejecutarAccion() {
@@ -19,7 +19,7 @@ public class CartaCambiarColor extends CartaComodin {
     }
 
     /**
-     * Obtiene el tipo de la carta
+     * Obtiene el tipo de la carta cambiar color
      *
      * @return tipo de la carta
      */
@@ -29,7 +29,7 @@ public class CartaCambiarColor extends CartaComodin {
     }
 
     /**
-     * Muestra la carta
+     * Muestra la carta cambiar color
      */
     @Override
     public void mostrarCarta() {

@@ -35,7 +35,7 @@ public class CartaRevertir extends CartaAccion {
     }
 
     /**
-     * Obtiene el tipo de la carta
+     * Obtiene el tipo de la carta revertir
      *
      * @return tipo de la carta
      */

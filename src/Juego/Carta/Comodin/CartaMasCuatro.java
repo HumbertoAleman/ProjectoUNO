@@ -13,7 +13,7 @@ public class CartaMasCuatro extends CartaComodin {
     }
 
     /**
-     * Ejecuta la accion de la carta
+     * Ejecuta la accion de la carta mas cuatro
      */
     @Override
     public void ejecutarAccion() {
@@ -22,7 +22,7 @@ public class CartaMasCuatro extends CartaComodin {
     }
 
     /**
-     * Obtiene el tipo de la carta
+     * Obtiene el tipo de la carta mas cuatro
      *
      * @return tipo de la carta
      */
@@ -32,7 +32,7 @@ public class CartaMasCuatro extends CartaComodin {
     }
 
     /**
-     * Muestra la carta
+     * Muestra la carta mas cuatro
      */
     @Override
     public void mostrarCarta() {

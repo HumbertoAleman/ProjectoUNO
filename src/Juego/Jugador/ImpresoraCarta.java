@@ -18,7 +18,12 @@ public interface ImpresoraCarta {
         put('Y', ANSI_YELLOW);
         put('G', ANSI_GREEN);
     }};
-
+    /**
+     * Muestra las cartas del jugador y muestra el reverso de las cartas del oponente
+     *
+     * @param cartas lista de cartas
+     * @param mostrada true si se quiere mostrar el contenido de la cartas, false si no
+     */
     static void mostrarMazo(LinkedList<Carta> cartas, boolean mostrada) {
         final int cartasPorFila = 7;
         for (int fila = 0; fila < Math.ceil((double) cartas.size() / cartasPorFila); fila++) {

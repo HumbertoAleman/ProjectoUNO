@@ -18,7 +18,9 @@ public class Computador extends Jugador {
         }
         System.out.println();
     }
-
+    /**
+     * El computador realiza una accion en su turno
+     */
     @Override
     public void tomarTurno() {
         mostrarTomarDecision();
@@ -42,7 +44,11 @@ public class Computador extends Jugador {
         }
         Juego.darCartas(this);
     }
-
+    /**
+     * El computador canta Uno
+     * 
+     * @return true
+     */
     @Override
     public boolean cantarUno() {
         System.out.println("El COMPUTADOR CANTO UNO!");

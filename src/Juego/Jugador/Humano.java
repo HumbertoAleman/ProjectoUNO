@@ -6,6 +6,9 @@ import Juego.Controlador.Juego;
 import java.util.Scanner;
 
 public class Humano extends Jugador {
+    /**
+     * El jugador realiza una accion en su turno
+     */
     @Override
     public void tomarTurno() {
         Scanner scanner = new Scanner(System.in);
@@ -17,7 +20,7 @@ public class Humano extends Jugador {
 
             System.out.println();
             if (Juego.getCartasATomar() > 0)
-                System.out.println("Ingrese T para tomar " + Juego.getCartasATomar() + "cartas");
+                System.out.println("Ingrese T para tomar " + Juego.getCartasATomar() + " cartas");
             else System.out.println("Ingrese T para tomar una carta");
             System.out.println();
 
@@ -41,6 +44,11 @@ public class Humano extends Jugador {
 
     //Calcula el tiempo desde que se ejecuta la funcion hasta que se recibe la entrada del usuario
     //Si es menor a 3 segundos es considerado valido y retorna true
+    /**
+     * Le da 3 segundos al jugador para cantar uno, sino agarrara cartas
+     *
+     * @return true si el jugador canta uno en menos de 3 segundos, false si no lo hace a tiempo
+     */
     public boolean cantarUno() {
         Scanner scanner = new Scanner(System.in);
         long tiempoInicio = System.currentTimeMillis();
@@ -53,7 +61,9 @@ public class Humano extends Jugador {
             return false;
         }
     }
-
+    /**
+     * Constructor de humano
+     */
     public Humano() {
     }
 }

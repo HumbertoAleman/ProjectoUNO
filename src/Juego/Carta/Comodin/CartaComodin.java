@@ -43,7 +43,7 @@ public abstract class CartaComodin implements Carta {
     }
 
     /**
-     * Ejecuta la accion de la carta
+     * Ejecuta la accion de la carta comodin
      */
     protected void changeColor() {
         if (Juego.jugadorEsCPU()) {

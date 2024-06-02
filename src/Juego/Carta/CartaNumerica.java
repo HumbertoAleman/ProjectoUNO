@@ -29,7 +29,7 @@ public class CartaNumerica extends CartaColorada {
     }
 
     /**
-     * Obtiene el tipo de la carta
+     * Obtiene el tipo de la carta numerica
      *
      * @return tipo de la carta
      */
@@ -39,7 +39,7 @@ public class CartaNumerica extends CartaColorada {
     }
 
     /**
-     * Muestra la carta
+     * Muestra la carta numerica
      */
     @Override
     public void mostrarCarta() {

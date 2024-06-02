@@ -29,7 +29,7 @@ public class CartaMasDos extends CartaAccion {
     }
 
     /**
-     * Obtiene el tipo de la carta
+     * Obtiene el tipo de la carta mas dos
      *
      * @return tipo de la carta
      */
