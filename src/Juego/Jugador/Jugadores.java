@@ -16,7 +16,7 @@ public class Jugadores {
     private int index = 0;
     private boolean order = true;
 
-    public void cambiarOrden(){
+    public void cambiarOrden() {
         this.order = !order;
     }
 

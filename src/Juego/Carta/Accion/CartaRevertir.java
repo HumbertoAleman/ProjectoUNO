@@ -25,7 +25,7 @@ public class CartaRevertir extends CartaAccion {
             Juego.setSaltarTurno(true);
             return;
         }
-        Juego.setDireccionPositiva(!Juego.isDireccionPositiva());
+        Juego.revertirOrden();
     }
     /**
      * Obtiene el tipo de la carta

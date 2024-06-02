@@ -12,15 +12,55 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Juego {
-    // Deberiamos cambiar esto a su propia clase para poder controlarlo mejor
-    // Como hicimos con pilarTomar y pilaJugar
-    private static Jugadores listaJugadores = new Jugadores();
+    private Juego() {
+    }
+
+    private static int cartasATomar;
+
+    public static int getCartasATomar() {
+        return cartasATomar;
+    }
+
+    public static void setCartasATomar(int cartasATomar) {
+        Juego.cartasATomar = cartasATomar;
+    }
+
+    private static boolean saltarTurno;
+
+    public static boolean isSaltarTurno() {
+        return saltarTurno;
+    }
+
+    public static void setSaltarTurno(boolean saltarTurno) {
+        Juego.saltarTurno = saltarTurno;
+    }
+
+    public static void revertirOrden() {
+        if (listaJugadores == null) return;
+        listaJugadores.cambiarOrden();
+    }
+
+    private static Jugadores listaJugadores;
+
     public static int getNumeroJugadores() {
-        if (listaJugadores == null) return 0;
-        return listaJugadores.size();
+        return listaJugadores == null ? 0 : listaJugadores.size();
+    }
+
+    public static boolean jugadorEsHumano() {
+        return listaJugadores != null && listaJugadores.validarJugadorHumano();
+    }
+
+    public static boolean jugadorEsCPU() {
+        return listaJugadores != null && listaJugadores.validarJugadorComputador();
     }
 
     private static PilaTomar pilaTomar;
+
+    public static void darCartas(Jugador jugador) {
+        pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
+        cartasATomar = 0;
+    }
+
     private static PilaJugar pilaJugar;
 
     public static boolean jugarCarta(Carta carta) {
@@ -29,19 +69,9 @@ public class Juego {
         return true;
     }
 
-    public static void darCartas(Jugador jugador) {
-        pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
-        if (cartasATomar > 0) cartasATomar = 0;
-    }
-
     public static List<Carta> getCartasPorDebajo() {
         return pilaJugar.getCartasPorDebajo();
     }
-
-
-    private static int cartasATomar;
-    private static boolean saltarTurno;
-    private static boolean direccionPositiva;
 
     public static void mostrarMenu() {
         System.out.println("----------------------------------");
@@ -61,7 +91,8 @@ public class Juego {
         switch (scanner.nextLine()) {
             case "1":
                 iniciarJuego();
-                while(loopJuego()) { }
+                while (loopJuego()) {
+                }
                 break;
             case "2":
                 // Cargar juego
@@ -75,27 +106,28 @@ public class Juego {
     }
 
     public static void iniciarJuego() {
+        listaJugadores = new Jugadores();
         pilaTomar = new PilaTomar();
         pilaJugar = new PilaJugar();
-        listaJugadores = listaJugadores;
+        cartasATomar = 0;
+        saltarTurno = false;
 
-        pilaTomar.crearListaCartas(); // Este metodo crea las cartas dentro de la pila
+        pilaTomar.crearListaCartas();
 
         listaJugadores.instanciarJugadores();
-        pilaTomar.repartirCartas(listaJugadores.getListaJugadores()); // Repartimos 7 cartas a c/u
+        pilaTomar.repartirCartas(listaJugadores.getListaJugadores());
 
         Carta primeraCarta = null;
-        while (primeraCarta == null || primeraCarta instanceof CartaComodin || primeraCarta instanceof CartaAccion) {
-            // Juega una carta hasta que NO sea o comodin o accion
+        while (primeraCarta == null ||
+                primeraCarta instanceof CartaComodin ||
+                primeraCarta instanceof CartaAccion) {
             primeraCarta = pilaTomar.tomarCarta();
             pilaJugar.jugarCarta(primeraCarta);
         }
-
-        // Comienza el loop del juego en si, iniciando con el jugador humano
     }
 
     public static boolean loopJuego() {
-        if (saltarTurno){
+        if (saltarTurno) {
             listaJugadores.siguienteJugador();
             saltarTurno = false;
         }
@@ -103,20 +135,13 @@ public class Juego {
         pilaJugar.mostrarCartaTope();
         System.out.println();
 
-        // Llamada al método jugadorEsCPU
-        if (jugadorEsCPU()) {
-            System.out.println("El jugador actual es una CPU.");
-        } else {
-            System.out.println("El jugador actual es un humano.");
-        }
-
         listaJugadores.jugadorActualTurno();
         int cartas = listaJugadores.getNumCartasJugadorActual();
 
         if (cartas == 1) {
-            if(!listaJugadores.jugadorActualCantarUno()){
-                pilaTomar.tomarCartas(listaJugadores.jugadorActual(), 7);
-            }
+//            if(!listaJugadores.jugadorActualCantarUno()){
+//                pilaTomar.tomarCartas(listaJugadores.jugadorActual(), 7);
+//            }
         } else if (cartas == 0) {
             // FUNCION GANAR
             return false;
@@ -138,37 +163,6 @@ public class Juego {
                 Runtime.getRuntime().exec("clear");
         } catch (final Exception e) {
         }
-    }
-
-    public static int getCartasATomar() {
-        return cartasATomar;
-    }
-
-    public static void setCartasATomar(int cartasATomar) {
-        Juego.cartasATomar = cartasATomar;
-    }
-
-    public static boolean isSaltarTurno() {
-        return saltarTurno;
-    }
-
-    public static void setSaltarTurno(boolean saltarTurno) {
-        Juego.saltarTurno = saltarTurno;
-    }
-
-    public static boolean isDireccionPositiva() {
-        return direccionPositiva;
-    }
-
-    public static void setDireccionPositiva(boolean direccionPositiva) {
-        Juego.direccionPositiva = direccionPositiva;
-    }
-
-    public static boolean jugadorEsHumano() {
-        return listaJugadores.validarJugadorHumano();
-    }
-    public static boolean jugadorEsCPU() {
-        return listaJugadores.validarJugadorComputador();
     }
 
 }
