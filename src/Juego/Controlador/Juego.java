@@ -127,6 +127,7 @@ public class Juego {
     }
 
     public static boolean loopJuego() {
+        limpiarConsola();
         if (saltarTurno) {
             listaJugadores.siguienteJugador();
             saltarTurno = false;
@@ -154,15 +155,12 @@ public class Juego {
     }
 
     public final static void limpiarConsola() {
-        try {
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows"))
-                Runtime.getRuntime().exec("cls");
-            else
-                Runtime.getRuntime().exec("clear");
-        } catch (final Exception e) {
-        }
+        // Esto es probablemente lo mas tonto que he hecho en mis 3.5 semestres que he estado en esta universidad
+        // pero me da demasiada flojera encontrar una manera de limpiar la consola en java.
+        // Si alguien encuentra una manera de limpiar la consola de verdad, y que funcione tanto en mac
+        // como en windows se lo agradeceria.
+        // - Humberto Aleman
+        for (int i = 0; i < 30; i++)
+            System.out.println();
     }
-
 }
