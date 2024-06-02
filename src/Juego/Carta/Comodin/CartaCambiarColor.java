@@ -9,6 +9,7 @@ public class CartaCambiarColor extends CartaComodin {
     public CartaCambiarColor() {
         super(CartaCambiarColor.tipo);
     }
+
     /**
      * Ejecuta la accion de la carta
      */
@@ -16,19 +17,22 @@ public class CartaCambiarColor extends CartaComodin {
     public void ejecutarAccion() {
         changeColor();
     }
+
     /**
      * Obtiene el tipo de la carta
+     *
      * @return tipo de la carta
      */
     @Override
     public String getTipo() {
         return tipo;
     }
+
     /**
      * Muestra la carta
      */
     @Override
-    public void mostrarCarta(){
-        System.out.print(this.getColor() + this.tipo + "  ");
+    public void mostrarCarta() {
+        System.out.print(this.getColor() + tipo + "  ");
     }
 }
