@@ -21,24 +21,6 @@ public class CartaNumerica extends CartaColorada {
     }
 
     /**
-     * Obtiene el numero de la carta
-     *
-     * @return numero de la carta
-     */
-    public String getNumero() {
-        return this.numero;
-    }
-
-    /**
-     * Asigna un numero a la carta
-     *
-     * @param numero numero a asignar a la carta
-     */
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    /**
      * Ejecuta la accion de la carta
      */
     @Override
