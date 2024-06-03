@@ -32,7 +32,7 @@ public class Guardador {
         listaJugadoresGuardar = gson.toJson(listaJugadores);
         pilaJugarGuardar = gson.toJson(pilaJugar);
         pilaTomarGuardar = gson.toJson(pilaTomar);
-        juegoGuardar = String.format("{ %s, %s, %s, 'saltarTurno': %b}", listaJugadoresGuardar, pilaJugarGuardar, pilaTomarGuardar, saltarTurno);
+        juegoGuardar = String.format("{ \"jugadores\": %s, \"pilaJugar\": %s, \"pilaTomar\": %s, \"saltarTurno\": %b}", listaJugadoresGuardar, pilaJugarGuardar, pilaTomarGuardar, saltarTurno);
         FileWriter fw = new FileWriter("C:\\Users\\10art\\Documents\\ProjectUNOCARDS\\src\\Juego\\Controlador\\juego.json");
         StringWriter sw = new StringWriter();
         sw.write(juegoGuardar);
