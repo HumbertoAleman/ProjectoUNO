@@ -4,15 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jugadores {
-    private final List<Jugador> listaJugadores = new ArrayList<>();
+    private List<Jugador> listaJugadores = new ArrayList<>();
     /**
      * Obtiene la lista de jugadores
      * 
      * @return lista de jugadores
      */
+    public Jugadores(){
+
+    }
+    public Jugadores(ArrayList<Jugador> listaJson){
+        this.listaJugadores = listaJson;
+    }
     public List<Jugador> getListaJugadores() {
         return this.listaJugadores;
     }
+
 
     private int index = 0;
     private boolean order = true;
