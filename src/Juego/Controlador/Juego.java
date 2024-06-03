@@ -8,9 +8,11 @@ import Juego.Carta.Pila.PilaTomar;
 import Juego.Jugador.Jugador;
 import Juego.Jugador.Jugadores;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import Juego.Controlador.*;
 public class Juego {
     private Juego() {
     }
@@ -133,7 +135,7 @@ public class Juego {
      * 
      * @return true para volver a mostrar el menu, false para no
      */
-    public static boolean menuLoop() {
+    public static boolean menuLoop() throws IOException {
         Scanner scanner = new Scanner(System.in);
         mostrarMenu();
 
@@ -181,7 +183,7 @@ public class Juego {
      * 
      * @return true para que se siga jugando el juego, false para no
      */
-    public static boolean loopJuego() {
+    public static boolean loopJuego() throws IOException {
         limpiarConsola();
         if (saltarTurno) {
             listaJugadores.siguienteJugador();
@@ -206,6 +208,7 @@ public class Juego {
         pilaJugar.usarEfectoDeCarta();
 
         listaJugadores.siguienteJugador();
+        Guardador.guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno);
         return true;
     }
     /**
