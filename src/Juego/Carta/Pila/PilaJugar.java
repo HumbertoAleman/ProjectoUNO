@@ -1,6 +1,7 @@
 package Juego.Carta.Pila;
 
 import Juego.Carta.Carta;
+import Juego.Carta.Comodin.CartaComodin;
 import Juego.Controlador.Juego;
 
 import java.util.LinkedList;
