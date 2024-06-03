@@ -92,4 +92,8 @@ public class Jugadores {
     public int size() {
         return listaJugadores.size();
     }
+
+    public void agregarJugador(Jugador jugador){
+        listaJugadores.add(jugador);
+    }
 }
