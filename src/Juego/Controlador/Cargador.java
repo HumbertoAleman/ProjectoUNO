@@ -76,6 +76,7 @@ public class Cargador {
             }
 
         }
+        return listaJugadores;
     }
 
 
