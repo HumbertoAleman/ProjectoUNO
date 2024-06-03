@@ -48,6 +48,10 @@ public class PilaJugar {
         LinkedList<Carta> cartasPorDebajo = new LinkedList<>(listaCartas);
         listaCartas.clear();
         listaCartas.add(primeraCarta);
+        for(Carta carta : cartasPorDebajo){
+            if(carta instanceof CartaComodin)
+                ((CartaComodin) carta).setColorSeleccionado('C');
+        }
         return cartasPorDebajo;
     }
 
@@ -65,9 +69,10 @@ public class PilaJugar {
             return true;
 
         if (Juego.getCartasATomar() > 0)
-            return listaCartas.peek().getTipo().equals(carta.getTipo()) &&
+            return listaCartas.peek().getTipo().equals(carta.getTipo());
+            /*&&
                     carta.getTipo().equals("T2") &&
-                    listaCartas.peek().getColor() == carta.getColor();
+                    listaCartas.peek().getColor() == carta.getColor();*/
 
         return carta.getTipo().equals("C") ||
                 listaCartas.peek().getColor() == carta.getColor() ||
