@@ -19,6 +19,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -49,24 +50,24 @@ public class Cargador {
             //Para instanciarlos de manera distinta al crear. Si queda tiempo lo implementamos debidamente.
             //Aqui se asume que el jugador en index 0 es el hum
             int j;
-            if(i == 0){
+            if (i == 0) {
                 jugador = humano;
-            }else{
+            } else {
                 jugador = computador;
             }
-            for(j =0; j<mazo.size(); j++){
+            for (j = 0; j < mazo.size(); j++) {
                 carta = (JSONObject) mazo.get(j);
-                if(carta.containsKey("tipo") && carta.containsKey("colorSeleccionado")){
-                    if(carta.get("tipo") == "T4"){
+                if (carta.containsKey("tipo") && carta.containsKey("colorSeleccionado")) {
+                    if (carta.get("tipo") == "T4") {
                         jugador.agregarCarta(new CartaMasCuatro());
-                    }else{
+                    } else {
                         jugador.agregarCarta(new CartaCambiarColor());
                     }
                 } else if (carta.containsKey("numero")) {
                     jugador.agregarCarta(new CartaNumerica(carta.get("color").toString().charAt(0), carta.get("numero").toString()));
-                }else if(carta.containsKey("tipo")){
+                } else if (carta.containsKey("tipo")) {
                     tipo = carta.get("tipo").toString();
-                    switch(tipo){
+                    switch (tipo) {
                         case "R":
                             jugador.agregarCarta(new CartaRevertir(carta.get("color").toString().charAt(0)));
                             break;
@@ -86,4 +87,77 @@ public class Cargador {
 
     }
 
+    public PilaTomar cargarPilaTomar() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        PilaTomar pilaTomar = new PilaTomar();
+
+        FileReader reader = new FileReader("C:\\Users\\10art\\Documents\\ProjectUNOCARDS\\src\\Juego\\Controlador\\pilaTomar.json");
+        Object obj = jsonParser.parse(reader);
+        JSONObject objeto = (JSONObject) obj;
+        JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
+        for (Object cartaActual : listaCartas) {
+            carta = (JSONObject) cartaActual;
+            if (carta.containsKey("tipo") && carta.containsKey("colorSeleccionado")) {
+                if (carta.get("tipo") == "T4") {
+                    pilaTomar.agregarCarta(new CartaMasCuatro());
+                } else {
+                    pilaTomar.agregarCarta(new CartaCambiarColor());
+                }
+            } else if (carta.containsKey("numero")) {
+                pilaTomar.agregarCarta(new CartaNumerica(carta.get("color").toString().charAt(0), carta.get("numero").toString()));
+            } else if (carta.containsKey("tipo")) {
+                tipo = carta.get("tipo").toString();
+                switch (tipo) {
+                    case "R":
+                        pilaTomar.agregarCarta(new CartaRevertir(carta.get("color").toString().charAt(0)));
+                        break;
+                    case "T2":
+                        pilaTomar.agregarCarta(new CartaMasDos(carta.get("color").toString().charAt(0)));
+                        break;
+                    case "S":
+                        pilaTomar.agregarCarta(new CartaSaltar(carta.get("color").toString().charAt(0)));
+                }
+
+            }
+
+        }
+        return pilaTomar;
+    }
+
+    public PilaJugar cargarPilaJugar() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        PilaJugar pilaJugar = new PilaJugar();
+
+        FileReader reader = new FileReader("C:\\Users\\10art\\Documents\\ProjectUNOCARDS\\src\\Juego\\Controlador\\pilaJugar.json");
+        Object obj = jsonParser.parse(reader);
+        JSONObject objeto = (JSONObject) obj;
+        JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
+        for (Object cartaActual : listaCartas) {
+            carta = (JSONObject) cartaActual;
+            if (carta.containsKey("tipo") && carta.containsKey("colorSeleccionado")) {
+                if (carta.get("tipo") == "T4") {
+                    pilaJugar.agregarCarta(new CartaMasCuatro());
+                } else {
+                    pilaJugar.agregarCarta(new CartaCambiarColor());
+                }
+            } else if (carta.containsKey("numero")) {
+                pilaJugar.agregarCarta(new CartaNumerica(carta.get("color").toString().charAt(0), carta.get("numero").toString()));
+            } else if (carta.containsKey("tipo")) {
+                tipo = carta.get("tipo").toString();
+                switch (tipo) {
+                    case "R":
+                        pilaJugar.agregarCarta(new CartaRevertir(carta.get("color").toString().charAt(0)));
+                        break;
+                    case "T2":
+                        pilaJugar.agregarCarta(new CartaMasDos(carta.get("color").toString().charAt(0)));
+                        break;
+                    case "S":
+                        pilaJugar.agregarCarta(new CartaSaltar(carta.get("color").toString().charAt(0)));
+                }
+
+            }
+
+        }
+        return pilaJugar;
+    }
 }

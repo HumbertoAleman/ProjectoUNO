@@ -74,4 +74,9 @@ public class PilaJugar {
                 listaCartas.peek().getTipo().equals(carta.getTipo());
     }
 
+    public void agregarCarta(Carta carta){
+        listaCartas.add(carta);
+        cartaFueJugada = true;
+    }
+
 }

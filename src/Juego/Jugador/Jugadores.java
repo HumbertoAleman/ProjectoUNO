@@ -93,6 +93,8 @@ public class Jugadores {
         return listaJugadores.size();
     }
 
+
+    //Esta funcion es unicamente usada al cargar
     public void agregarJugador(Jugador jugador){
         listaJugadores.add(jugador);
     }

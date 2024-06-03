@@ -82,4 +82,9 @@ public class PilaTomar {
         for (Jugador jugador : jugadores)
             tomarCartas(jugador, 7);
     }
+
+    //Esta funcion es usada unicamente al cargar
+    public void agregarCarta(Carta carta){
+        listaCartas.add(carta);
+    }
 }
