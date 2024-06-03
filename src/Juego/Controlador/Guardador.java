@@ -28,11 +28,11 @@ public class Guardador {
         //}
     }
 
-    public static void guardarJuego(Jugadores listaJugadores, PilaJugar pilaJugar, PilaTomar pilaTomar, boolean saltarTurno) throws IOException {
+    public static void guardarJuego(Jugadores listaJugadores, PilaJugar pilaJugar, PilaTomar pilaTomar, boolean saltarTurno, int cartasATomar) throws IOException {
         listaJugadoresGuardar = gson.toJson(listaJugadores);
         pilaJugarGuardar = gson.toJson(pilaJugar);
         pilaTomarGuardar = gson.toJson(pilaTomar);
-        juegoGuardar = String.format("{ \"jugadores\": %s, \"pilaJugar\": %s, \"pilaTomar\": %s, \"saltarTurno\": %b}", listaJugadoresGuardar, pilaJugarGuardar, pilaTomarGuardar, saltarTurno);
+        juegoGuardar = String.format("{ \"jugadores\": %s, \"pilaJugar\": %s, \"pilaTomar\": %s, \"saltarTurno\": %b, \"cartasATomar\": %o}", listaJugadoresGuardar, pilaJugarGuardar, pilaTomarGuardar, saltarTurno, cartasATomar);
         FileWriter fw = new FileWriter("C:\\Users\\10art\\Documents\\ProjectUNOCARDS\\src\\Juego\\Controlador\\juego.json");
         StringWriter sw = new StringWriter();
         sw.write(juegoGuardar);
