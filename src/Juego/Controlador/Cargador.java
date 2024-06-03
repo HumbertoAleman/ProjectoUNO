@@ -37,7 +37,7 @@ public class Cargador {
     public Jugadores cargarJugadores() throws IOException, ParseException {
         Jugadores listaJugadores = new Jugadores();
         JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader("C:\\Users\\10art\\Documents\\ProjectUNOCARDS\\src\\Juego\\Controlador\\listaJugadores.json");
+        FileReader reader = new FileReader("Juego/Controlador/listaJugadores.json");
         Object obj = jsonParser.parse(reader);
         JSONObject objeto = (JSONObject) obj;
         JSONArray listaJugadoresJson = (JSONArray) objeto.get("listaJugadores");
@@ -91,7 +91,7 @@ public class Cargador {
         JSONParser jsonParser = new JSONParser();
         PilaTomar pilaTomar = new PilaTomar();
 
-        FileReader reader = new FileReader("C:\\Users\\10art\\Documents\\ProjectUNOCARDS\\src\\Juego\\Controlador\\pilaTomar.json");
+        FileReader reader = new FileReader("Juego/Controlador/pilaTomar.json");
         Object obj = jsonParser.parse(reader);
         JSONObject objeto = (JSONObject) obj;
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
@@ -128,7 +128,7 @@ public class Cargador {
         JSONParser jsonParser = new JSONParser();
         PilaJugar pilaJugar = new PilaJugar();
 
-        FileReader reader = new FileReader("C:\\Users\\10art\\Documents\\ProjectUNOCARDS\\src\\Juego\\Controlador\\pilaJugar.json");
+        FileReader reader = new FileReader("Juego/Controlador/pilaJugar.json");
         Object obj = jsonParser.parse(reader);
         JSONObject objeto = (JSONObject) obj;
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
