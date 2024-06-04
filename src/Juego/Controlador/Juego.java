@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import static Juego.Controlador.Guardador.guardarJuego;
+
 public class Juego {
     private Juego() {
     }
@@ -135,7 +137,7 @@ public class Juego {
      * 
      * @return true para volver a mostrar el menu, false para no
      */
-    public static boolean menuLoop() {
+    public static boolean menuLoop() throws IOException {
         Scanner scanner = new Scanner(System.in);
         mostrarMenu();
 
@@ -202,7 +204,7 @@ public class Juego {
      * 
      * @return true para que se siga jugando el juego, false para no
      */
-    public static boolean loopJuego() {
+    public static boolean loopJuego() throws IOException {
         limpiarConsola();
         if (saltarTurno) {
             listaJugadores.siguienteJugador();
@@ -213,7 +215,7 @@ public class Juego {
         System.out.println();
 
         try {
-            Guardador.guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno, cartasATomar);
+            guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno, cartasATomar);
         } catch(IOException e) {
             System.err.println(e.getMessage());
         }
@@ -234,6 +236,7 @@ public class Juego {
 
         pilaJugar.usarEfectoDeCarta();
         listaJugadores.siguienteJugador();
+        guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno, cartasATomar);
         return true;
     }
     /**
