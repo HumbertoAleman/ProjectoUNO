@@ -6,6 +6,7 @@ import Juego.Controlador.Juego;
 public class Computador extends Jugador {
     public Computador(String nombre) {
         super(nombre);
+        tipo = "C";
     }
 
     private void mostrarTomarDecision() {
@@ -57,9 +58,5 @@ public class Computador extends Jugador {
     public boolean cantarUno() {
         System.out.println("El COMPUTADOR CANTO UNO!");
         return true;
-    }
-
-    public Computador() {
-        tipo = "C";
     }
 }

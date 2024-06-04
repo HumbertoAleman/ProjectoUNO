@@ -73,7 +73,7 @@ public class Cargador {
 
         for (Object jugadorObject : listaJugadoresJson) {
             JSONObject jugadorJSON = (JSONObject) jugadorObject;
-            Jugador jugador = jugadorJSON.containsKey("tipo") && jugadorJSON.get("tipo").equals("H") ? new Humano() : new Computador();
+            Jugador jugador = jugadorJSON.containsKey("tipo") && jugadorJSON.get("tipo").equals("H") ? new Humano("PRUEBA") : new Computador("PRUEBA");
 
             JSONArray mazoArray = (JSONArray) jugadorJSON.get("mazo");
             for (Object cartaObject : mazoArray)
