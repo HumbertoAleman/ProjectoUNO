@@ -5,6 +5,9 @@ public class Main {
      * Main del programa
      */
     public static void main(String[] args) {
-        while(Juego.menuLoop());
+        boolean corriendo = true;
+        while(corriendo) {
+            corriendo = Juego.menuLoop();
+        }
     }
 }

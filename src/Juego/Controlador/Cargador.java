@@ -28,10 +28,10 @@ public class Cargador {
 
     /**
      * Transforma un string del camino al archivo .json en un JSONObject para lectura
-     * @param path
-     * @return
-     * @throws IOException
-     * @throws ParseException
+     * @param path La direccion del archivo, sea relativa o absoluta
+     * @return El JSONObject del json del archivo
+     * @throws IOException Sera lanzada si hay un error leyendo el archivo
+     * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     private JSONObject fromPathToJSONObject(String path) throws IOException, ParseException {
         return (JSONObject) new JSONParser().parse(new FileReader(path));
@@ -39,8 +39,8 @@ public class Cargador {
 
     /**
      * Transforma un objeto de tipo JSONObject en una Carta
-     * @param carta
-     * @return
+     * @param carta JSONObject a transformar en una carta
+     * @return Carta transformada en JSON, si no se puede determinar el tipo de carta, retorna null
      */
     private Carta fromJSONObjectToCarta(JSONObject carta) {
         String numero;
@@ -74,9 +74,9 @@ public class Cargador {
 
     /**
      * Metodo encargado de cargar los jugadores
-     * @return
-     * @throws IOException
-     * @throws ParseException
+     * @return Retorna la lista de jugadores cargada
+     * @throws IOException Sera lanzada si hay un error leyendo el archivo
+     * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     public Jugadores cargarJugadores() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/listaJugadores.json");
@@ -105,9 +105,9 @@ public class Cargador {
 
     /**
      * Metodo encargado de cargar la Pila Tomar
-     * @return
-     * @throws IOException
-     * @throws ParseException
+     * @return Retorna la Pila Tomar con las cartas que contenga
+     * @throws IOException Sera lanzada si hay un error leyendo el archivo
+     * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     public PilaTomar cargarPilaTomar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/pilaTomar.json");
@@ -122,9 +122,9 @@ public class Cargador {
 
     /**
      * Metodo encargado de cargar la PilaJugar
-     * @return
-     * @throws IOException
-     * @throws ParseException
+     * @return Retorna la Pila Jugar con las cartas que contenga
+     * @throws IOException Sera lanzada si hay un error leyendo el archivo
+     * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     public PilaJugar cargarPilaJugar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/pilaJugar.json");
@@ -139,9 +139,9 @@ public class Cargador {
 
     /**
      * Metodo encargado de cargar si se esta saltando un turno
-     * @return
-     * @throws IOException
-     * @throws ParseException
+     * @return Retorna un booleano que dictara si se salta el turno del jugador actual
+     * @throws IOException Sera lanzada si hay un error leyendo el archivo
+     * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     public boolean cargarSaltarTurno() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/juego.json");
@@ -150,9 +150,9 @@ public class Cargador {
 
     /**
      * Metodo encargado de cargar las cartas que tiene que tomar el siguiente jugador
-     * @return
-     * @throws IOException
-     * @throws ParseException
+     * @return Retorna un entero con la cantidad de cartas que debera tomar el jugador actual
+     * @throws IOException Sera lanzada si hay un error leyendo el archivo
+     * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     public int cargarCartasAtomar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/juego.json");

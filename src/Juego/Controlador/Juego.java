@@ -139,14 +139,17 @@ public class Juego {
      */
     public static boolean menuLoop() throws IOException {
         Scanner scanner = new Scanner(System.in);
-        mostrarMenu();
+        boolean jugando = true;
 
+        mostrarMenu();
         switch (scanner.nextLine()) {
             case "1":
                 iniciarJuego();
-                while (loopJuego()) {
+                while (jugando) {
+                    jugando = loopJuego();
                 }
-                break;
+                limpiarConsola();
+                return false;
             case "2":
                 try {
                     cargarJuego();
@@ -156,15 +159,16 @@ public class Juego {
                     System.out.println("No se pudo cargar el juego, se iniciara un juego nuevo");
                     iniciarJuego();
                 }
-                while(loopJuego()) {
+                while (jugando) {
+                    jugando = loopJuego();
                 }
-                break;
+                limpiarConsola();
+                return false;
             case "0":
                 return false;
             default:
                 return true;
         }
-        return false;
     }
     /**
      * Instancia los objetos del juego
@@ -194,7 +198,6 @@ public class Juego {
         listaJugadores = cargador.cargarJugadores();
         pilaTomar = cargador.cargarPilaTomar();
         pilaJugar = cargador.cargarPilaJugar();
-
 
         saltarTurno = cargador.cargarSaltarTurno();
         cartasATomar = cargador.cargarCartasAtomar();

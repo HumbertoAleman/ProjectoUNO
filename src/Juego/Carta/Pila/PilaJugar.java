@@ -3,6 +3,7 @@ package Juego.Carta.Pila;
 import Juego.Carta.Carta;
 import Juego.Carta.Comodin.CartaComodin;
 import Juego.Controlador.Juego;
+import Juego.Jugador.ImpresoraCarta;
 
 import java.util.*;
 
@@ -33,7 +34,10 @@ public class PilaJugar {
      * Muestra la carta en el tope de la pila de jugar
      */
     public void mostrarCartaTope() {
-        listaCartas.peek().mostrarCarta();
+        System.out.println("+---+");
+        ImpresoraCarta.imprimirCuerpoCarta(listaCartas.peek(), true);
+        System.out.println();
+        System.out.println("+---+");
     }
 
     /**
@@ -81,9 +85,4 @@ public class PilaJugar {
         listaCartas.add(carta);
         cartaFueJugada = true;
     }
-
-    public void revertirCartas(){
-        Collections.reverse(listaCartas);
-    }
-
 }
