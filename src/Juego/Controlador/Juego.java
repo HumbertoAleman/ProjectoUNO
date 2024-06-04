@@ -146,7 +146,8 @@ public class Juego {
                 while (jugando) {
                     jugando = loopJuego();
                 }
-                break;
+                limpiarConsola();
+                return false;
             case "2":
                 try {
                     cargarJuego();
@@ -159,13 +160,13 @@ public class Juego {
                 while (jugando) {
                     jugando = loopJuego();
                 }
-                break;
+                limpiarConsola();
+                return false;
             case "0":
                 return false;
             default:
                 return true;
         }
-        return false;
     }
     /**
      * Instancia los objetos del juego
