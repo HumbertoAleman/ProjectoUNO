@@ -5,7 +5,9 @@ import Juego.Carta.Carta;
 import java.util.LinkedList;
 
 public abstract class Jugador {
-        protected LinkedList<Carta> mazo = new LinkedList<Carta>();
+        protected String tipo;
+
+        protected LinkedList<Carta> mazo = new LinkedList<>();
         /**
          * Agrega una carta al mazo
          *
@@ -22,14 +24,15 @@ public abstract class Jugador {
          */
         public boolean validarUno(){
             return mazo.size() == 1;
-
         }
+
         /**
          * Revisa si el jugador canta uno 
          * 
          * @return true si canta uno, false si no
          */
         public abstract boolean cantarUno();
+
         /**
          * Obtiene la cantidad de cartas del mazo del jugador
          * 

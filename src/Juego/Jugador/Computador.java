@@ -9,10 +9,10 @@ public class Computador extends Jugador {
         System.out.print("El oponente esta tomando una seleccion");
         try {
             for (int i = 0; i < 3; i++) {
-                Thread.sleep(1);
+                Thread.sleep(750);
                 System.out.print(".");
             }
-            Thread.sleep(1);
+            Thread.sleep(750);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -53,5 +53,9 @@ public class Computador extends Jugador {
     public boolean cantarUno() {
         System.out.println("El COMPUTADOR CANTO UNO!");
         return true;
+    }
+
+    public Computador() {
+        tipo = "C";
     }
 }

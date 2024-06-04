@@ -65,5 +65,6 @@ public class Humano extends Jugador {
      * Constructor de humano
      */
     public Humano() {
+        tipo = "H";
     }
 }
