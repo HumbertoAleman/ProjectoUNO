@@ -13,10 +13,10 @@ public class Computador extends Jugador {
         System.out.print("El oponente esta tomando una seleccion");
         try {
             for (int i = 0; i < 3; i++) {
-                Thread.sleep(500);
+                Thread.sleep(750);
                 System.out.print(".");
             }
-            Thread.sleep(500);
+            Thread.sleep(750);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -33,7 +33,7 @@ public class Computador extends Jugador {
                 mazo.remove(carta);
                 System.out.println("El oponente ha jugado la carta: " + carta.getColor() + carta.getTipo());
                 try {
-                    Thread.sleep(1500);
+                    Thread.sleep(0);
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
@@ -57,5 +57,9 @@ public class Computador extends Jugador {
     public boolean cantarUno() {
         System.out.println("El COMPUTADOR CANTO UNO!");
         return true;
+    }
+
+    public Computador() {
+        tipo = "C";
     }
 }

@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public abstract class CartaComodin implements Carta {
-    private char colorSeleccionado = 'C';
+    protected char colorSeleccionado = 'C';
 
     /**
      * Obtiene el color de la carta

@@ -5,15 +5,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Jugadores {
-    private final List<Jugador> listaJugadores = new ArrayList<>();
+    private List<Jugador> listaJugadores = new ArrayList<>();
     /**
      * Obtiene la lista de jugadores
      * 
      * @return lista de jugadores
      */
+    public Jugadores(){
+
+    }
+    public Jugadores(ArrayList<Jugador> listaJson){
+        this.listaJugadores = listaJson;
+    }
     public List<Jugador> getListaJugadores() {
         return this.listaJugadores;
     }
+
 
     private int index = 0;
     private boolean order = true;
@@ -94,5 +101,19 @@ public class Jugadores {
      */
     public int size() {
         return listaJugadores.size();
+    }
+
+
+    //Esta funcion es unicamente usada al cargar
+    public void agregarJugador(Jugador jugador){
+        listaJugadores.add(jugador);
+    }
+
+    public void setIndex(int index){
+        this.index = index;
+    }
+
+    public void setOrder(boolean order){
+        this.order = order;
     }
 }

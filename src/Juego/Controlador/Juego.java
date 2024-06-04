@@ -8,8 +8,12 @@ import Juego.Carta.Pila.PilaTomar;
 import Juego.Jugador.Jugador;
 import Juego.Jugador.Jugadores;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+import Juego.Controlador.*;
+import org.json.simple.parser.ParseException;
 
 public class Juego {
     private Juego() {
@@ -133,7 +137,7 @@ public class Juego {
      * 
      * @return true para volver a mostrar el menu, false para no
      */
-    public static boolean menuLoop() {
+    public static boolean menuLoop() throws IOException, ParseException {
         Scanner scanner = new Scanner(System.in);
         mostrarMenu();
 
@@ -144,7 +148,9 @@ public class Juego {
                 }
                 break;
             case "2":
-                // Cargar juego
+                cargarJuego();
+                while(loopJuego()){
+                }
                 break;
             case "0":
                 return false;
@@ -176,12 +182,22 @@ public class Juego {
             pilaJugar.jugarCarta(primeraCarta);
         }
     }
+    public static void cargarJuego() throws IOException, ParseException {
+        Cargador cargador = new Cargador();
+        listaJugadores = cargador.cargarJugadores();
+        pilaTomar = cargador.cargarPilaTomar();
+        pilaJugar = cargador.cargarPilaJugar();
+
+
+        saltarTurno = cargador.cargarSaltarTurno();
+        cartasATomar = cargador.cargarCartasAtomar();
+    }
     /**
      * Comienza el juego 
      * 
      * @return true para que se siga jugando el juego, false para no
      */
-    public static boolean loopJuego() {
+    public static boolean loopJuego() throws IOException {
         limpiarConsola();
         if (saltarTurno) {
             listaJugadores.siguienteJugador();
@@ -209,6 +225,7 @@ public class Juego {
         pilaJugar.usarEfectoDeCarta();
 
         listaJugadores.siguienteJugador();
+        Guardador.guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno, cartasATomar);
         return true;
     }
     /**

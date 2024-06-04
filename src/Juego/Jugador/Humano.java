@@ -69,4 +69,10 @@ public class Humano extends Jugador {
             return false;
         }
     }
+    /**
+     * Constructor de humano
+     */
+    public Humano() {
+        tipo = "H";
+    }
 }
