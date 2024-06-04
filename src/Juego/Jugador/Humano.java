@@ -62,7 +62,7 @@ public class Humano extends Jugador {
     public boolean cantarUno() {
         Scanner scanner = new Scanner(System.in);
         long tiempoInicio = System.currentTimeMillis();
-        System.out.println("Es momento de cantar UNO!\nPresiona la tecla U rapido!");
+        System.out.println("Es momento de cantar UNO!\nPresiona la tecla U y ENTER rapido!");
         if (scanner.nextLine().equals("U")) {
             long tiempoFinal = System.currentTimeMillis();
             return (tiempoFinal - tiempoInicio) <= 3000;
