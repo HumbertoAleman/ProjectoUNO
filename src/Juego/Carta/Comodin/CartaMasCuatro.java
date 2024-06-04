@@ -12,6 +12,11 @@ public class CartaMasCuatro extends CartaComodin {
         super(CartaMasCuatro.tipo);
     }
 
+    public CartaMasCuatro(Character color) {
+        super(CartaMasCuatro.tipo);
+        colorSeleccionado = color;
+    }
+
     /**
      * Ejecuta la accion de la carta mas cuatro
      */
