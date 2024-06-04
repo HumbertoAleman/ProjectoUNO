@@ -62,7 +62,7 @@ public abstract class CartaComodin implements Carta {
 
         Scanner scanner = new Scanner(System.in);
         while (this.colorSeleccionado == 'C') {
-            Juego.limpiarConsola();
+            // Juego.limpiarConsola();
             cambiarColorDialogo();
             switch (scanner.nextLine().toLowerCase()) {
                 case "r":

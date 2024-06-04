@@ -148,7 +148,7 @@ public class Juego {
                 while (jugando) {
                     jugando = loopJuego();
                 }
-                limpiarConsola();
+                // limpiarConsola();
                 return false;
             case "2":
                 try {
@@ -162,7 +162,7 @@ public class Juego {
                 while (jugando) {
                     jugando = loopJuego();
                 }
-                limpiarConsola();
+                // limpiarConsola();
                 return false;
             case "0":
                 return false;
@@ -207,7 +207,7 @@ public class Juego {
      * @return true para que se siga jugando el juego, false para no
      */
     public static boolean loopJuego() throws IOException {
-        limpiarConsola();
+        // limpiarConsola();
         if (saltarTurno) {
             listaJugadores.siguienteJugador();
             saltarTurno = false;
@@ -227,7 +227,7 @@ public class Juego {
             } catch (Exception sleepError) {
                 System.err.println(sleepError.getMessage());;
             }
-            limpiarConsola();
+            // limpiarConsola();
         }
         listaJugadores.jugadorActualTurno();
         int cartas = listaJugadores.getNumCartasJugadorActual();
@@ -236,9 +236,6 @@ public class Juego {
             if(!listaJugadores.getJugadorActual().cantarUno() || listaJugadores.getJugadorActual().getCarta() instanceof CartaComodin){
                 pilaTomar.tomarCartas(listaJugadores.getJugadorActual(),1);
             }
-//            if(!listaJugadores.jugadorActualCantarUno()){
-//                pilaTomar.tomarCartas(listaJugadores.jugadorActual(), 7);
-//            }
         } else if (cartas == 0) {
             // FUNCION GANAR
             return false;
@@ -251,6 +248,7 @@ public class Juego {
     }
     /**
      * Limpia la patalla
+     * @deprecated
      */
     public static void limpiarConsola() {
         // Esto es probablemente lo mas tonto que he hecho en mis 3.5 semestres que he estado en esta universidad
@@ -260,7 +258,7 @@ public class Juego {
         // - Humberto Aleman
 
         StringBuilder out = new StringBuilder();
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 15; i++)
             out.append("\n");
         System.out.println(out);
     }
