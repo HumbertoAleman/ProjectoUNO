@@ -16,7 +16,11 @@ public abstract class Jugador {
         public Jugador(String nombre) {
                 this.nombre = nombre;
         }
-
+        /**
+         * Obtiene el nombre del jugador
+         * 
+        * @return nombre del jugador
+        */
         public String getNombre() {
                 return nombre;
         }

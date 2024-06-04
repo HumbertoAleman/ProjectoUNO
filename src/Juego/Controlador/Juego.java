@@ -193,6 +193,9 @@ public class Juego {
             pilaJugar.jugarCarta(primeraCarta);
         }
     }
+    /**
+     * Carga los datos del juego
+     */
     public static void cargarJuego() throws IOException, ParseException {
         listaJugadores = Cargador.cargarJugadores();
         pilaTomar = Cargador.cargarPilaTomar();

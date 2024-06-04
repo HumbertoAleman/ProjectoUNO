@@ -7,16 +7,23 @@ import java.util.Scanner;
 public class Jugadores {
     private List<Jugador> listaJugadores = new ArrayList<>();
     /**
+     * Constructor jugadores
+     */
+    public Jugadores(){
+    }
+    /**
+     * Constructor Jugadores
+     * 
+     * @param listaJson 
+     */
+    public Jugadores(ArrayList<Jugador> listaJson){
+        this.listaJugadores = listaJson;
+    }
+    /**
      * Obtiene la lista de jugadores
      * 
      * @return lista de jugadores
      */
-    public Jugadores(){
-
-    }
-    public Jugadores(ArrayList<Jugador> listaJson){
-        this.listaJugadores = listaJson;
-    }
     public List<Jugador> getListaJugadores() {
         return this.listaJugadores;
     }
@@ -105,14 +112,27 @@ public class Jugadores {
 
 
     //Esta funcion es unicamente usada al cargar
+    /**
+     * Agrega un jugador a la lista de jugadores
+     * 
+     * @param jugador un jugador
+     */
     public void agregarJugador(Jugador jugador){
         listaJugadores.add(jugador);
     }
-
+    /**
+     * Asigna a quien le toca el turno
+     * 
+     * @param index posicion del turno del personaje actual
+     */
     public void setIndex(int index){
         this.index = index;
     }
-
+    /**
+     * Asigna el orden de jugadores
+     * 
+     * @param order orden de jugadores
+     */
     public void setOrder(boolean order){
         this.order = order;
     }
