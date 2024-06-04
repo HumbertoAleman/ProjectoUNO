@@ -8,15 +8,8 @@ import com.google.gson.Gson;
 import java.io.*;
 
 
-public class Guardador {
-    static String listaJugadoresGuardar;
-    static String pilaJugarGuardar;
-    static String pilaTomarGuardar;
+public interface Guardador {
 
-    static String juegoGuardar;
-
-    private static Gson gson = new Gson();
-    private Guardador() {}
     /**
      * Guarda la informacion del juego 
      */
@@ -32,9 +25,10 @@ public class Guardador {
 
 
     public static void guardarJuego(Jugadores listaJugadores, PilaJugar pilaJugar, PilaTomar pilaTomar, boolean saltarTurno, int cartasATomar) throws IOException {
-        listaJugadoresGuardar = gson.toJson(listaJugadores);
-        pilaJugarGuardar = gson.toJson(pilaJugar);
-        pilaTomarGuardar = gson.toJson(pilaTomar);
+        Gson gson = new Gson();
+        String listaJugadoresGuardar = gson.toJson(listaJugadores);
+        String pilaJugarGuardar = gson.toJson(pilaJugar);
+        String  pilaTomarGuardar = gson.toJson(pilaTomar);
         //Instancie el FileWriter una vez por cada archivo porque intente usar el flush,
         //Pero no se guardaban bien los datos
 
@@ -55,7 +49,7 @@ public class Guardador {
         FWPilaTomar.close();
         FileWriter FWJuego = new FileWriter("src/Juego/Controlador/juego.json");
         StringWriter SWJuego = new StringWriter();
-        juegoGuardar  = String.format("{\"saltarTurno\":%b, \"cartasATomar\":%o }", saltarTurno, cartasATomar);
+        String juegoGuardar  = String.format("{\"saltarTurno\":%b, \"cartasATomar\":%o }", saltarTurno, cartasATomar);
         SWJuego.write(juegoGuardar);
         FWJuego.write(SWJuego.toString());
         FWJuego.close();
