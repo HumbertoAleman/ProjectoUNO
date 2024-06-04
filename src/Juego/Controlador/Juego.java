@@ -194,13 +194,12 @@ public class Juego {
         }
     }
     public static void cargarJuego() throws IOException, ParseException {
-        Cargador cargador = new Cargador();
-        listaJugadores = cargador.cargarJugadores();
-        pilaTomar = cargador.cargarPilaTomar();
-        pilaJugar = cargador.cargarPilaJugar();
+        listaJugadores = Cargador.cargarJugadores();
+        pilaTomar = Cargador.cargarPilaTomar();
+        pilaJugar = Cargador.cargarPilaJugar();
 
-        saltarTurno = cargador.cargarSaltarTurno();
-        cartasATomar = cargador.cargarCartasAtomar();
+        saltarTurno = Cargador.cargarSaltarTurno();
+        cartasATomar = Cargador.cargarCartasAtomar();
     }
     /**
      * Comienza el juego 
@@ -221,6 +220,14 @@ public class Juego {
             guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno, cartasATomar);
         } catch(IOException e) {
             System.err.println(e.getMessage());
+            System.out.println();
+            System.out.println("Ha ocurrido un error guardando el juego, continuando...");
+            try {
+                Thread.sleep(3000);
+            } catch (Exception sleepError) {
+                System.err.println(sleepError.getMessage());;
+            }
+            limpiarConsola();
         }
         listaJugadores.jugadorActualTurno();
         int cartas = listaJugadores.getNumCartasJugadorActual();

@@ -9,50 +9,50 @@ import java.io.*;
 
 
 public interface Guardador {
+    Gson gson = new Gson();
 
     /**
-     * Guarda la informacion del juego 
+     * Metodo que guarda el juego
+     * @param listaJugadores Lista de jugadores a guardar
+     * @param pilaJugar Pila de Cartas Jugadas a guardar
+     * @param pilaTomar Pila de Cartas para Tomar a guardar
+     * @param saltarTurno Valor de verdad si se salta el turno del siguiente jugador
+     * @param cartasATomar Valor de verdad de la cantidad de cartas a tomar
+     * @throws IOException Se lanza la excepcion si ocurre un error guardando el archivo
      */
-    public static void guardarJuego() {
-        // Guardamos la pila a tomar EN ORDEN
-        // Guardamos la pila de juego EN ORDEN
-        // Guardamos los jugadores como
-        // "1": {
-        //     "mazo": "R4 R5 B2 B1 CT4"
-        //}
-    }
+    static void guardarJuego(Jugadores listaJugadores, PilaJugar pilaJugar, PilaTomar pilaTomar, boolean saltarTurno, int cartasATomar) throws IOException {
+        String listaJugadoresGuardar;
+        String pilaJugarGuardar;
+        String pilaTomarGuardar;
+        String juegoGuardar;
 
-
-
-    public static void guardarJuego(Jugadores listaJugadores, PilaJugar pilaJugar, PilaTomar pilaTomar, boolean saltarTurno, int cartasATomar) throws IOException {
-        Gson gson = new Gson();
-        String listaJugadoresGuardar = gson.toJson(listaJugadores);
-        String pilaJugarGuardar = gson.toJson(pilaJugar);
-        String  pilaTomarGuardar = gson.toJson(pilaTomar);
-        //Instancie el FileWriter una vez por cada archivo porque intente usar el flush,
-        //Pero no se guardaban bien los datos
+        listaJugadoresGuardar = gson.toJson(listaJugadores);
+        pilaJugarGuardar = gson.toJson(pilaJugar);
+        pilaTomarGuardar = gson.toJson(pilaTomar);
 
         FileWriter FWJugadores = new FileWriter("src/Juego/Controlador/listaJugadores.json");
         StringWriter SWJugadores = new StringWriter();
         SWJugadores.write(listaJugadoresGuardar);
         FWJugadores.write(SWJugadores.toString());
         FWJugadores.close();
+
         FileWriter FWPilaJugar = new FileWriter("src/Juego/Controlador/pilaJugar.json");
         StringWriter SWPilaJugar = new StringWriter();
         SWPilaJugar.write(pilaJugarGuardar);
         FWPilaJugar.write(SWPilaJugar.toString());
         FWPilaJugar.close();
+
         FileWriter FWPilaTomar = new FileWriter("src/Juego/Controlador/pilaTomar.json");
         StringWriter SWPilaTomar = new StringWriter();
         SWPilaTomar.write(pilaTomarGuardar);
         FWPilaTomar.write(SWPilaTomar.toString());
         FWPilaTomar.close();
+
         FileWriter FWJuego = new FileWriter("src/Juego/Controlador/juego.json");
         StringWriter SWJuego = new StringWriter();
-        String juegoGuardar  = String.format("{\"saltarTurno\":%b, \"cartasATomar\":%o }", saltarTurno, cartasATomar);
+        juegoGuardar  = String.format("{\"saltarTurno\":%b, \"cartasATomar\":%o }", saltarTurno, cartasATomar);
         SWJuego.write(juegoGuardar);
         FWJuego.write(SWJuego.toString());
         FWJuego.close();
-
     }
 }

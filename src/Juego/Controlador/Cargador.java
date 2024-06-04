@@ -21,11 +21,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Cargador {
-    public Cargador() {
-
-    }
-
+public interface Cargador {
     /**
      * Transforma un string del camino al archivo .json en un JSONObject para lectura
      * @param path La direccion del archivo, sea relativa o absoluta
@@ -33,7 +29,7 @@ public class Cargador {
      * @throws IOException Sera lanzada si hay un error leyendo el archivo
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
-    private JSONObject fromPathToJSONObject(String path) throws IOException, ParseException {
+    static JSONObject fromPathToJSONObject(String path) throws IOException, ParseException {
         return (JSONObject) new JSONParser().parse(new FileReader(path));
     }
 
@@ -42,7 +38,7 @@ public class Cargador {
      * @param carta JSONObject a transformar en una carta
      * @return Carta transformada en JSON, si no se puede determinar el tipo de carta, retorna null
      */
-    private Carta fromJSONObjectToCarta(JSONObject carta) {
+    static Carta fromJSONObjectToCarta(JSONObject carta) {
         String numero;
         String tipo;
         char color;
@@ -78,7 +74,7 @@ public class Cargador {
      * @throws IOException Sera lanzada si hay un error leyendo el archivo
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
-    public Jugadores cargarJugadores() throws IOException, ParseException {
+    static Jugadores cargarJugadores() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/listaJugadores.json");
         JSONArray listaJugadoresJson = (JSONArray) objeto.get("listaJugadores");
 
@@ -109,7 +105,7 @@ public class Cargador {
      * @throws IOException Sera lanzada si hay un error leyendo el archivo
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
-    public PilaTomar cargarPilaTomar() throws IOException, ParseException {
+    static PilaTomar cargarPilaTomar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/pilaTomar.json");
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
 
@@ -126,7 +122,7 @@ public class Cargador {
      * @throws IOException Sera lanzada si hay un error leyendo el archivo
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
-    public PilaJugar cargarPilaJugar() throws IOException, ParseException {
+    static PilaJugar cargarPilaJugar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/pilaJugar.json");
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
 
@@ -143,7 +139,7 @@ public class Cargador {
      * @throws IOException Sera lanzada si hay un error leyendo el archivo
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
-    public boolean cargarSaltarTurno() throws IOException, ParseException {
+    static boolean cargarSaltarTurno() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/juego.json");
         return (boolean) objeto.get("saltarTurno");
     }
@@ -154,7 +150,7 @@ public class Cargador {
      * @throws IOException Sera lanzada si hay un error leyendo el archivo
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
-    public int cargarCartasAtomar() throws IOException, ParseException {
+    static int cargarCartasAtomar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/juego.json");
         return (int) (long) objeto.get("cartasATomar");
     }
