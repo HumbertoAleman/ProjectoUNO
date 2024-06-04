@@ -5,6 +5,7 @@ import Juego.Carta.Accion.CartaSaltar;
 import Juego.Carta.Carta;
 import Juego.Carta.CartaNumerica;
 import Juego.Carta.Comodin.CartaCambiarColor;
+import Juego.Carta.Comodin.CartaComodin;
 import Juego.Carta.Comodin.CartaMasCuatro;
 import Juego.Carta.Pila.PilaJugar;
 import Juego.Carta.Pila.PilaTomar;
@@ -34,16 +35,20 @@ public class Cargador {
 
     }
 
+
     public Jugadores cargarJugadores() throws IOException, ParseException {
         Jugadores listaJugadores = new Jugadores();
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader("src/Juego/Controlador/listaJugadores.json");
         Object obj = jsonParser.parse(reader);
         JSONObject objeto = (JSONObject) obj;
+
         JSONArray listaJugadoresJson = (JSONArray) objeto.get("listaJugadores");
         Jugador humano = new Humano();
         Jugador computador = new Computador();
         Jugador jugador;
+        CartaMasCuatro cartaMasCuatro = new CartaMasCuatro();
+        CartaCambiarColor cartaCambiarColor = new CartaCambiarColor();
         for (int i = 0; i < listaJugadoresJson.size(); i++) {
             JSONObject jugadorJSON = (JSONObject) listaJugadoresJson.get(i);
             JSONArray mazo = (JSONArray) jugadorJSON.get("mazo");
@@ -60,9 +65,11 @@ public class Cargador {
                 carta = (JSONObject) mazo.get(j);
                 if (carta.containsKey("tipo") && carta.containsKey("colorSeleccionado")) {
                     if (carta.get("tipo") == "T4") {
-                        jugador.agregarCarta(new CartaMasCuatro());
+                        cartaMasCuatro.setColorSeleccionado((char) carta.get("colorSeleccionado"));
+                        jugador.agregarCarta(cartaMasCuatro);
                     } else {
-                        jugador.agregarCarta(new CartaCambiarColor());
+                        cartaCambiarColor.setColorSeleccionado((char) carta.get("colorSeleccionado"));
+                        jugador.agregarCarta(cartaCambiarColor);
                     }
                 } else if (carta.containsKey("numero")) {
                     jugador.agregarCarta(new CartaNumerica(carta.get("color").toString().charAt(0), carta.get("numero").toString()));
@@ -82,8 +89,12 @@ public class Cargador {
             }
 
         }
+
         listaJugadores.agregarJugador(humano);
         listaJugadores.agregarJugador(computador);
+        System.out.println(objeto.toJSONString());
+        listaJugadores.setOrder((boolean) objeto.get("order"));
+        listaJugadores.setIndex((int)(long) objeto.get("index"));
         return listaJugadores;
 
     }
@@ -96,13 +107,17 @@ public class Cargador {
         Object obj = jsonParser.parse(reader);
         JSONObject objeto = (JSONObject) obj;
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
+        CartaMasCuatro cartaMasCuatro = new CartaMasCuatro();
+        CartaCambiarColor cartaCambiarColor = new CartaCambiarColor();
         for (Object cartaActual : listaCartas) {
             carta = (JSONObject) cartaActual;
             if (carta.containsKey("tipo") && carta.containsKey("colorSeleccionado")) {
                 if (carta.get("tipo") == "T4") {
-                    pilaTomar.agregarCarta(new CartaMasCuatro());
+                    cartaMasCuatro.setColorSeleccionado((carta.get("colorSeleccionado").toString().charAt(0)));
+                    pilaTomar.agregarCarta(cartaMasCuatro);
                 } else {
-                    pilaTomar.agregarCarta(new CartaCambiarColor());
+                    cartaCambiarColor.setColorSeleccionado((carta.get("colorSeleccionado").toString().charAt(0)));
+                    pilaTomar.agregarCarta(cartaCambiarColor);
                 }
             } else if (carta.containsKey("numero")) {
                 pilaTomar.agregarCarta(new CartaNumerica(carta.get("color").toString().charAt(0), carta.get("numero").toString()));

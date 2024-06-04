@@ -98,4 +98,12 @@ public class Jugadores {
     public void agregarJugador(Jugador jugador){
         listaJugadores.add(jugador);
     }
+
+    public void setIndex(int index){
+        this.index = index;
+    }
+
+    public void setOrder(boolean order){
+        this.order = order;
+    }
 }

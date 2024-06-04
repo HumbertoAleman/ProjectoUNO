@@ -87,4 +87,8 @@ public class PilaTomar {
     public void agregarCarta(Carta carta){
         listaCartas.add(carta);
     }
+
+    public void revertirCartas(){
+        Collections.reverse(listaCartas);
+    }
 }

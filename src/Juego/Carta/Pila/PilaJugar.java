@@ -3,10 +3,7 @@ package Juego.Carta.Pila;
 import Juego.Carta.Carta;
 import Juego.Controlador.Juego;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class PilaJugar {
     private final Stack<Carta> listaCartas = new Stack<>();
@@ -77,6 +74,10 @@ public class PilaJugar {
     public void agregarCarta(Carta carta){
         listaCartas.add(carta);
         cartaFueJugada = true;
+    }
+
+    public void revertirCartas(){
+        Collections.reverse(listaCartas);
     }
 
 }
