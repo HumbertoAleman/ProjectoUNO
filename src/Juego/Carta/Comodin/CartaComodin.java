@@ -18,10 +18,6 @@ public abstract class CartaComodin implements Carta {
         return colorSeleccionado;
     }
 
-    public void setColorSeleccionado(char colorSeleccionado){
-        this.colorSeleccionado = colorSeleccionado;
-    }
-
     protected String tipo;
 
     /**
