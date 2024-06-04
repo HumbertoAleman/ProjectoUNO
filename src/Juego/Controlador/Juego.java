@@ -237,6 +237,7 @@ public class Juego {
                 pilaTomar.tomarCartas(listaJugadores.getJugadorActual(),1);
             }
         } else if (cartas == 0) {
+            System.out.println("HA GANADO : " + listaJugadores.getJugadorActual().getNombre());
             // FUNCION GANAR
             return false;
         }

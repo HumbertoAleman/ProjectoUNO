@@ -28,6 +28,7 @@ public class Humano extends Jugador {
             ImpresoraCarta.mostrarMazo(mazo, true);
 
             System.out.println();
+            System.out.println("Es el turno de: " + getNombre());
             if (Juego.getCartasATomar() > 0)
                 System.out.println("Ingrese T para tomar " + Juego.getCartasATomar() + " cartas");
             else System.out.println("Ingrese T para tomar una carta");
