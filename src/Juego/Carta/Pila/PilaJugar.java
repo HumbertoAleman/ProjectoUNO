@@ -85,9 +85,4 @@ public class PilaJugar {
         listaCartas.add(carta);
         cartaFueJugada = true;
     }
-
-    public void revertirCartas(){
-        Collections.reverse(listaCartas);
-    }
-
 }
