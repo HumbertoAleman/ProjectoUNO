@@ -9,7 +9,11 @@ public class CartaCambiarColor extends CartaComodin {
     public CartaCambiarColor() {
         super(CartaCambiarColor.tipo);
     }
-
+    /**
+     * Constructor de la carta cambiar color
+     *
+     * @param color color selecccionado
+     */
     public CartaCambiarColor(Character color) {
         super(CartaCambiarColor.tipo);
         colorSeleccionado = color;

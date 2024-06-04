@@ -36,9 +36,6 @@ public abstract class CartaComodin implements Carta {
         this.tipo = tipo;
     }
 
-    /**
-     * Pregunta a que color quiere cambiar la carta
-     */
     private static void cambiarColorDialogo() {
         System.out.println("Colores: ");
         System.out.println("R. Rojo");
@@ -49,9 +46,6 @@ public abstract class CartaComodin implements Carta {
         System.out.print("Ingrese el color a jugar: ");
     }
 
-    /**
-     * Ejecuta la accion de la carta comodin
-     */
     protected void changeColor() {
         if (Juego.jugadorEsCPU()) {
             Random rand = new Random();

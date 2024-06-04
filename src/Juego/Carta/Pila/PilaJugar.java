@@ -80,7 +80,11 @@ public class PilaJugar {
                 listaCartas.peek().getColor() == carta.getColor() ||
                 listaCartas.peek().getTipo().equals(carta.getTipo());
     }
-
+    /**
+     * Agrega una carta a la pila
+     *
+     * @param carta carta a agregar
+     */
     public void agregarCarta(Carta carta){
         listaCartas.add(carta);
         cartaFueJugada = true;

@@ -4,6 +4,11 @@ import Juego.Carta.Carta;
 import Juego.Controlador.Juego;
 
 public class Computador extends Jugador {
+    /**
+     * Constructor Computador
+     *
+     * @param nombre nombre del CPU
+     */
     public Computador(String nombre) {
         super(nombre);
         tipo = "C";
