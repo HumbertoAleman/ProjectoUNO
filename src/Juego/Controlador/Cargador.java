@@ -13,7 +13,6 @@ import Juego.Jugador.Computador;
 import Juego.Jugador.Humano;
 import Juego.Jugador.Jugador;
 import Juego.Jugador.Jugadores;
-import com.google.gson.Gson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,8 +22,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Cargador {
-    private final Gson gson = new Gson();
-
     public Cargador() {
 
     }
@@ -73,7 +70,12 @@ public class Cargador {
 
         for (Object jugadorObject : listaJugadoresJson) {
             JSONObject jugadorJSON = (JSONObject) jugadorObject;
-            Jugador jugador = jugadorJSON.containsKey("tipo") && jugadorJSON.get("tipo").equals("H") ? new Humano("PRUEBA") : new Computador("PRUEBA");
+            String nombreJugador = jugadorJSON.containsKey("nombre")
+                    ? jugadorJSON.get("nombre").toString()
+                    : "Jugador";
+            Jugador jugador = jugadorJSON.containsKey("tipo") && jugadorJSON.get("tipo").equals("H")
+                    ? new Humano(nombreJugador)
+                    : new Computador("CPU");
 
             JSONArray mazoArray = (JSONArray) jugadorJSON.get("mazo");
             for (Object cartaObject : mazoArray)

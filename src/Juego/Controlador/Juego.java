@@ -7,13 +7,11 @@ import Juego.Carta.Pila.PilaJugar;
 import Juego.Carta.Pila.PilaTomar;
 import Juego.Jugador.Jugador;
 import Juego.Jugador.Jugadores;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-
-import Juego.Controlador.*;
-import org.json.simple.parser.ParseException;
 
 public class Juego {
     private Juego() {
@@ -137,7 +135,7 @@ public class Juego {
      * 
      * @return true para volver a mostrar el menu, false para no
      */
-    public static boolean menuLoop() throws IOException, ParseException {
+    public static boolean menuLoop() {
         Scanner scanner = new Scanner(System.in);
         mostrarMenu();
 
@@ -148,8 +146,15 @@ public class Juego {
                 }
                 break;
             case "2":
-                cargarJuego();
-                while(loopJuego()){
+                try {
+                    cargarJuego();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                    System.out.println();
+                    System.out.println("No se pudo cargar el juego, se iniciara un juego nuevo");
+                    iniciarJuego();
+                }
+                while(loopJuego()) {
                 }
                 break;
             case "0":
@@ -197,7 +202,7 @@ public class Juego {
      * 
      * @return true para que se siga jugando el juego, false para no
      */
-    public static boolean loopJuego() throws IOException {
+    public static boolean loopJuego() {
         limpiarConsola();
         if (saltarTurno) {
             listaJugadores.siguienteJugador();
@@ -207,6 +212,11 @@ public class Juego {
         pilaJugar.mostrarCartaTope();
         System.out.println();
 
+        try {
+            Guardador.guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno, cartasATomar);
+        } catch(IOException e) {
+            System.err.println(e.getMessage());
+        }
         listaJugadores.jugadorActualTurno();
         int cartas = listaJugadores.getNumCartasJugadorActual();
 
@@ -223,15 +233,13 @@ public class Juego {
         }
 
         pilaJugar.usarEfectoDeCarta();
-
         listaJugadores.siguienteJugador();
-        Guardador.guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno, cartasATomar);
         return true;
     }
     /**
      * Limpia la patalla
      */
-    public final static void limpiarConsola() {
+    public static void limpiarConsola() {
         // Esto es probablemente lo mas tonto que he hecho en mis 3.5 semestres que he estado en esta universidad
         // pero me da demasiada flojera encontrar una manera de limpiar la consola en java.
         // Si alguien encuentra una manera de limpiar la consola de verdad, y que funcione tanto en mac
