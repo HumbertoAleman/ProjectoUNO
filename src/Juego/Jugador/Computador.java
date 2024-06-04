@@ -34,7 +34,7 @@ public class Computador extends Jugador {
                 mazo.remove(carta);
                 System.out.println("El oponente ha jugado la carta: " + carta.getColor() + carta.getTipo());
                 try {
-                    Thread.sleep(0);
+                    Thread.sleep(1500);
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
