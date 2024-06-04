@@ -137,12 +137,14 @@ public class Juego {
      */
     public static boolean menuLoop() {
         Scanner scanner = new Scanner(System.in);
-        mostrarMenu();
+        boolean jugando = true;
 
+        mostrarMenu();
         switch (scanner.nextLine()) {
             case "1":
                 iniciarJuego();
-                while (loopJuego()) {
+                while (jugando) {
+                    jugando = loopJuego();
                 }
                 break;
             case "2":
@@ -154,7 +156,8 @@ public class Juego {
                     System.out.println("No se pudo cargar el juego, se iniciara un juego nuevo");
                     iniciarJuego();
                 }
-                while(loopJuego()) {
+                while (jugando) {
+                    jugando = loopJuego();
                 }
                 break;
             case "0":
@@ -192,7 +195,6 @@ public class Juego {
         listaJugadores = cargador.cargarJugadores();
         pilaTomar = cargador.cargarPilaTomar();
         pilaJugar = cargador.cargarPilaJugar();
-
 
         saltarTurno = cargador.cargarSaltarTurno();
         cartasATomar = cargador.cargarCartasAtomar();
