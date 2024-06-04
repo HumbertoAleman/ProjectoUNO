@@ -80,7 +80,7 @@ public class PilaTomar {
      */
     public void repartirCartas(List<Jugador> jugadores) {
         for (Jugador jugador : jugadores)
-            tomarCartas(jugador, 7);
+            tomarCartas(jugador, 1);
     }
 
     //Esta funcion es usada unicamente al cargar

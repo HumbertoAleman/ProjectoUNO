@@ -149,7 +149,7 @@ public class Juego {
                     jugando = loopJuego();
                 }
                 // limpiarConsola();
-                return false;
+                return true;
             case "2":
                 try {
                     cargarJuego();
@@ -163,7 +163,7 @@ public class Juego {
                     jugando = loopJuego();
                 }
                 // limpiarConsola();
-                return false;
+                return true;
             case "0":
                 return false;
             default:
@@ -213,6 +213,8 @@ public class Juego {
             saltarTurno = false;
         }
 
+        System.out.println();
+        System.out.println();
         pilaJugar.mostrarCartaTope();
         System.out.println();
 
