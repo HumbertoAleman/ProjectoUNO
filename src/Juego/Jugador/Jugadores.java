@@ -2,6 +2,7 @@ package Juego.Jugador;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Jugadores {
     private final List<Jugador> listaJugadores = new ArrayList<>();
@@ -30,9 +31,10 @@ public class Jugadores {
             listaJugadores.add(new Humano());
         }*/
         //Implementacion para multijugador
-
-        Jugador jugadorHumano = new Humano();
-        Jugador jugadorComputador = new Computador();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese su nombre");
+        Jugador jugadorHumano = new Humano(scanner.nextLine());
+        Jugador jugadorComputador = new Computador("CPU");
         listaJugadores.add(jugadorHumano);
         listaJugadores.add(jugadorComputador);
 

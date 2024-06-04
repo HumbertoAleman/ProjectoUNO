@@ -4,6 +4,10 @@ import Juego.Carta.Carta;
 import Juego.Controlador.Juego;
 
 public class Computador extends Jugador {
+    public Computador(String nombre) {
+        super(nombre);
+    }
+
     private void mostrarTomarDecision() {
         ImpresoraCarta.mostrarMazo(mazo, false);
         System.out.print("El oponente esta tomando una seleccion");

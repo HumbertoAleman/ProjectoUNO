@@ -7,6 +7,14 @@ import java.util.Scanner;
 
 public class Humano extends Jugador {
     /**
+     * Costructor de humano
+     *
+     * @param nombre nombre del jugador
+     */
+    public Humano(String nombre) {
+        super(nombre);
+    }
+    /**
      * El jugador realiza una accion en su turno
      */
     @Override
@@ -60,10 +68,5 @@ public class Humano extends Jugador {
             System.out.println("No lo hiciste a tiempo :(");
             return false;
         }
-    }
-    /**
-     * Constructor de humano
-     */
-    public Humano() {
     }
 }

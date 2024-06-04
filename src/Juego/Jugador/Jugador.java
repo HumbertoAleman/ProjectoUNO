@@ -6,6 +6,20 @@ import java.util.LinkedList;
 
 public abstract class Jugador {
         protected LinkedList<Carta> mazo = new LinkedList<Carta>();
+        private String nombre;
+        /**
+         * Constructor de Jugador
+         *
+         * @param nombre nombre jugador
+         */
+        public Jugador(String nombre) {
+                this.nombre = nombre;
+        }
+
+        public String getNombre() {
+                return nombre;
+        }
+
         /**
          * Agrega una carta al mazo
          *
@@ -37,6 +51,14 @@ public abstract class Jugador {
          */
         public int getCantidadDeCartas() {
                 return mazo.size();
+        }
+        /**
+         * Obtiene la primera carta del mazo del jugaor
+         *
+         * @return Carta
+         */
+        public Carta getCarta(){
+                return mazo.getFirst();
         }
         /**
          * Toma el turno del jugador

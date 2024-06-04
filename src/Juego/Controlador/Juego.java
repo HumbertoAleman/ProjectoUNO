@@ -195,7 +195,7 @@ public class Juego {
         int cartas = listaJugadores.getNumCartasJugadorActual();
 
         if (cartas == 1) {
-            if(!listaJugadores.getJugadorActual().cantarUno()){
+            if(!listaJugadores.getJugadorActual().cantarUno() || listaJugadores.getJugadorActual().getCarta() instanceof CartaComodin){
                 pilaTomar.tomarCartas(listaJugadores.getJugadorActual(),1);
             }
 //            if(!listaJugadores.jugadorActualCantarUno()){
