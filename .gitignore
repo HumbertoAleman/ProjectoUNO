@@ -27,3 +27,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### IGNORAR GUARDADO
+src/Juego/Controlador/*.json
