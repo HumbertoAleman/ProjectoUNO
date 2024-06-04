@@ -18,6 +18,25 @@ public interface ImpresoraCarta {
         put('Y', ANSI_YELLOW);
         put('G', ANSI_GREEN);
     }};
+
+    /**
+     * Imprime el cuerpo de la carta con el color adecuado
+     * @param carta La carta a imprimir
+     * @param mostrada Si es verdadero, mostrara su etiqueta, si es falso, mostrara UNO
+     */
+    static void imprimirCuerpoCarta(Carta carta, boolean mostrada) {
+        String cartaMostrar;
+        String codigoAnsi;
+        if (mostrada) {
+            cartaMostrar = String.format("%-3s", carta.getColor() + carta.getTipo());
+            codigoAnsi = colorMap.getOrDefault(carta.getColor(), ANSI_WHITE);
+        } else {
+            cartaMostrar = "UNO";
+            codigoAnsi = ANSI_WHITE;
+        }
+        System.out.print("|" + codigoAnsi + cartaMostrar + ANSI_RESET + "|    ");
+    }
+
     /**
      * Muestra las cartas del jugador y muestra el reverso de las cartas del oponente
      *
@@ -33,18 +52,8 @@ public interface ImpresoraCarta {
 
             int from = fila * cartasPorFila;
             int to = Math.min(fila * cartasPorFila + cartasPorFila, cartas.size());
-            for (Carta cartaActual : cartas.subList(from, to)) {
-                String cartaMostrar;
-                String codigoAnsi;
-                if (mostrada) {
-                    cartaMostrar = String.format("%-3s", cartaActual.getColor() + cartaActual.getTipo());
-                    codigoAnsi = colorMap.getOrDefault(cartaActual.getColor(), ANSI_WHITE);
-                } else {
-                    cartaMostrar = "UNO";
-                    codigoAnsi = ANSI_WHITE;
-                }
-                System.out.print("|" + codigoAnsi + cartaMostrar + ANSI_RESET + "|    ");
-            }
+            for (Carta cartaActual : cartas.subList(from, to))
+                imprimirCuerpoCarta(cartaActual, mostrada);
             System.out.println();
 
             for (int i = 0; i < Math.min(cartasPorFila, cartas.size() - fila * cartasPorFila); i++)
