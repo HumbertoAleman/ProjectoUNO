@@ -122,7 +122,7 @@ public class Cargador {
             }
 
         }
-        pilaTomar.revertirCartas();
+
         return pilaTomar;
     }
 
@@ -160,7 +160,7 @@ public class Cargador {
             }
 
         }
-        pilaJugar.revertirCartas();
+
         return pilaJugar;
     }
 
