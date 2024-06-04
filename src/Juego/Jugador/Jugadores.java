@@ -54,6 +54,14 @@ public class Jugadores {
         index = (index - 1) % listaJugadores.size();
     }
     /**
+     * Obtiene el jugador actual
+     *
+     * @return Jugador actual
+     */
+    public Jugador getJugadorActual(){
+        return listaJugadores.get(index);
+    }
+    /**
      * Valida si el jugador actual es humano
      * 
      * @return true si el jugador actual es humano, false si no
