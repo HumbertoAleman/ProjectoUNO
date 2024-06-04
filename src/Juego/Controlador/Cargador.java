@@ -26,10 +26,22 @@ public class Cargador {
 
     }
 
+    /**
+     * Transforma un string del camino al archivo .json en un JSONObject para lectura
+     * @param path
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     private JSONObject fromPathToJSONObject(String path) throws IOException, ParseException {
         return (JSONObject) new JSONParser().parse(new FileReader(path));
     }
 
+    /**
+     * Transforma un objeto de tipo JSONObject en una Carta
+     * @param carta
+     * @return
+     */
     private Carta fromJSONObjectToCarta(JSONObject carta) {
         String numero;
         String tipo;
@@ -60,7 +72,12 @@ public class Cargador {
         return null;
     }
 
-
+    /**
+     * Metodo encargado de cargar los jugadores
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     public Jugadores cargarJugadores() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/listaJugadores.json");
         JSONArray listaJugadoresJson = (JSONArray) objeto.get("listaJugadores");
@@ -86,6 +103,12 @@ public class Cargador {
         return listaJugadores;
     }
 
+    /**
+     * Metodo encargado de cargar la Pila Tomar
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     public PilaTomar cargarPilaTomar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/pilaTomar.json");
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
@@ -97,6 +120,12 @@ public class Cargador {
         return pilaTomar;
     }
 
+    /**
+     * Metodo encargado de cargar la PilaJugar
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     public PilaJugar cargarPilaJugar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/pilaJugar.json");
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
@@ -108,11 +137,23 @@ public class Cargador {
         return pilaJugar;
     }
 
+    /**
+     * Metodo encargado de cargar si se esta saltando un turno
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     public boolean cargarSaltarTurno() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/juego.json");
         return (boolean) objeto.get("saltarTurno");
     }
 
+    /**
+     * Metodo encargado de cargar las cartas que tiene que tomar el siguiente jugador
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     public int cargarCartasAtomar() throws IOException, ParseException {
         JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/juego.json");
         return (int) (long) objeto.get("cartasATomar");
