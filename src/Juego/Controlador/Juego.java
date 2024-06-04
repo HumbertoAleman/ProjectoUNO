@@ -185,9 +185,12 @@ public class Juego {
     public static void cargarJuego() throws IOException, ParseException {
         Cargador cargador = new Cargador();
         listaJugadores = cargador.cargarJugadores();
+        pilaTomar = cargador.cargarPilaTomar();
+        pilaJugar = cargador.cargarPilaJugar();
 
-        saltarTurno = false;
-        cartasATomar = 0;
+
+        saltarTurno = cargador.cargarSaltarTurno();
+        cartasATomar = cargador.cargarCartasAtomar();
     }
     /**
      * Comienza el juego 

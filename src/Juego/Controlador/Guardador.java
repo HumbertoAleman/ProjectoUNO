@@ -38,7 +38,7 @@ public class Guardador {
         //Instancie el FileWriter una vez por cada archivo porque intente usar el flush,
         //Pero no se guardaban bien los datos
 
-        FileWriter FWJugadores = new FileWriter("Juego/Controlador/listaJugadores.json");
+        FileWriter FWJugadores = new FileWriter("src/Juego/Controlador/listaJugadores.json");
         StringWriter SWJugadores = new StringWriter();
         SWJugadores.write(listaJugadoresGuardar);
         FWJugadores.write(SWJugadores.toString());

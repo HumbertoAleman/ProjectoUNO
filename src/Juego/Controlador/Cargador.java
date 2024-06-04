@@ -37,7 +37,7 @@ public class Cargador {
     public Jugadores cargarJugadores() throws IOException, ParseException {
         Jugadores listaJugadores = new Jugadores();
         JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader("Juego/Controlador/listaJugadores.json");
+        FileReader reader = new FileReader("src/Juego/Controlador/listaJugadores.json");
         Object obj = jsonParser.parse(reader);
         JSONObject objeto = (JSONObject) obj;
         JSONArray listaJugadoresJson = (JSONArray) objeto.get("listaJugadores");
@@ -45,7 +45,8 @@ public class Cargador {
         Jugador computador = new Computador();
         Jugador jugador;
         for (int i = 0; i < listaJugadoresJson.size(); i++) {
-            JSONArray mazo = (JSONArray) listaJugadoresJson.get(i);
+            JSONObject jugadorJSON = (JSONObject) listaJugadoresJson.get(i);
+            JSONArray mazo = (JSONArray) jugadorJSON.get("mazo");
             //Top idioteces que he hecho, para la proxima entrega deberiamos de colocar un distinctivo entre humanos y computadores en el JSON
             //Para instanciarlos de manera distinta al crear. Si queda tiempo lo implementamos debidamente.
             //Aqui se asume que el jugador en index 0 es el hum
@@ -91,7 +92,7 @@ public class Cargador {
         JSONParser jsonParser = new JSONParser();
         PilaTomar pilaTomar = new PilaTomar();
 
-        FileReader reader = new FileReader("Juego/Controlador/pilaTomar.json");
+        FileReader reader = new FileReader("src/Juego/Controlador/pilaTomar.json");
         Object obj = jsonParser.parse(reader);
         JSONObject objeto = (JSONObject) obj;
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
@@ -121,6 +122,7 @@ public class Cargador {
             }
 
         }
+        pilaTomar.revertirCartas();
         return pilaTomar;
     }
 
@@ -128,7 +130,7 @@ public class Cargador {
         JSONParser jsonParser = new JSONParser();
         PilaJugar pilaJugar = new PilaJugar();
 
-        FileReader reader = new FileReader("Juego/Controlador/pilaJugar.json");
+        FileReader reader = new FileReader("src/Juego/Controlador/pilaJugar.json");
         Object obj = jsonParser.parse(reader);
         JSONObject objeto = (JSONObject) obj;
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
@@ -158,6 +160,24 @@ public class Cargador {
             }
 
         }
+        pilaJugar.revertirCartas();
         return pilaJugar;
+    }
+
+    public boolean cargarSaltarTurno () throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("src/Juego/Controlador/juego.json");
+        Object obj = jsonParser.parse(reader);
+        JSONObject objeto = (JSONObject) obj;
+        return (boolean) objeto.get("saltarTurno");
+
+    }
+
+    public int cargarCartasAtomar() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("src/Juego/Controlador/juego.json");
+        Object obj = jsonParser.parse(reader);
+        JSONObject objeto = (JSONObject) obj;
+        return (int)(long) objeto.get("cartasATomar");
     }
 }
