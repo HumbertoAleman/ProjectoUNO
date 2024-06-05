@@ -93,7 +93,8 @@ public class Juego {
     /**
      * Le da cartas a un jugador
      *
-     * @param jugador un jugador
+     * @param jugador Jugador al que se le daran las cartas
+     * @return Retorna la lista de las cartas que se le dieron al jugador
      */
     public static ArrayList<Carta> darCartas(Jugador jugador) {
         ArrayList<Carta> listaRetornar = pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
@@ -136,12 +137,12 @@ public class Juego {
         System.out.println();
         System.out.print("Seleccion: ");
     }
+
     /**
-     * Permite escoger una opcion del menu
-     * 
-     * @return true para volver a mostrar el menu, false para no
+     * El loop de menu para seleccionar si jugamos o cargamos una partida
+     * @return Retorna falso si se desea salir del juego
      */
-    public static boolean menuLoop() throws IOException {
+    public static boolean menuLoop() {
         Scanner scanner = new Scanner(System.in);
         boolean jugando = true;
 
@@ -197,8 +198,11 @@ public class Juego {
             pilaJugar.jugarCarta(primeraCarta);
         }
     }
+
     /**
-     * Carga los datos del juego
+     * Funcion para cargar el juego
+     * @throws IOException Se lanza si ocurre un error al leer el archivo
+     * @throws ParseException Se lanza si ocurre un error al transformar el archivo en un json
      */
     public static void cargarJuego() throws IOException, ParseException {
         listaJugadores = Cargador.cargarJugadores();
@@ -208,12 +212,20 @@ public class Juego {
         saltarTurno = Cargador.cargarSaltarTurno();
         cartasATomar = Cargador.cargarCartasAtomar();
     }
+
     /**
-     * Comienza el juego 
-     * 
-     * @return true para que se siga jugando el juego, false para no
+     * Loop del juego
+     * - Se revisa si se salta el turno de un jugador
+     * - Se muestra la carta actual
+     * - Se guarda el juego
+     * - El jugador actual toma su turno
+     * - Si solo queda una carta, y es comodin, se le da una carta al jugador
+     * - Si solo queda una carta, y no es comodin, el jugador canta UNO
+     * - Se aplica el efecto de la carta jugada
+     * - Se pasa al siguiente jugador
+     * @return Retorna un booleano, retorna falso si el juego termina
      */
-    public static boolean loopJuego() throws IOException {
+    public static boolean loopJuego() {
         // limpiarConsola();
         if (saltarTurno) {
             listaJugadores.siguienteJugador();
@@ -261,7 +273,6 @@ public class Juego {
 
         pilaJugar.usarEfectoDeCarta();
         listaJugadores.siguienteJugador();
-        guardarJuego(listaJugadores, pilaJugar, pilaTomar, saltarTurno, cartasATomar);
         return true;
     }
     /**

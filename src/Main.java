@@ -1,12 +1,12 @@
 import Juego.Controlador.Juego;
 
-import java.io.IOException;
-
 public class Main {
+
     /**
-     * Main del programa
+     * Funcion Main
+     * @param args Argumentos de la funcion Main
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         boolean corriendo = true;
         while(corriendo) {
             corriendo = Juego.menuLoop();

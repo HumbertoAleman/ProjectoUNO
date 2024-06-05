@@ -46,6 +46,7 @@ public class PilaTomar {
 
     /**
      * baraja las cartas
+     * @param listaCartas La lista de cartas que va a ser revuelta
      */
     public void shuffle(Stack<Carta> listaCartas) {
         Collections.shuffle(listaCartas);
@@ -65,6 +66,7 @@ public class PilaTomar {
      *
      * @param jugador un jugador
      * @param n       numero de cartas a tomar
+     * @return La lista de cartas que se le dio al jugador
      */
     public ArrayList<Carta> tomarCartas(Jugador jugador, int n) {
         ArrayList<Carta> listaRetornar = new ArrayList<>();

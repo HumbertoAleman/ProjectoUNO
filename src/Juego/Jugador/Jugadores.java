@@ -14,10 +14,10 @@ public class Jugadores {
     /**
      * Constructor Jugadores
      * 
-     * @param listaJson 
+     * @param listaJugadores Lista de jugadores con los que inicializar la lista
      */
-    public Jugadores(ArrayList<Jugador> listaJson){
-        this.listaJugadores = listaJson;
+    public Jugadores(ArrayList<Jugador> listaJugadores){
+        this.listaJugadores = listaJugadores;
     }
     /**
      * Obtiene la lista de jugadores
