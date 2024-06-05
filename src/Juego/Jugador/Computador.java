@@ -3,6 +3,8 @@ package Juego.Jugador;
 import Juego.Carta.Carta;
 import Juego.Controlador.Juego;
 
+import java.util.ArrayList;
+
 public class Computador extends Jugador {
     /**
      * Constructor Computador
@@ -17,17 +19,14 @@ public class Computador extends Jugador {
     private void mostrarTomarDecision() {
         ImpresoraCarta.mostrarMazo(mazo, false);
         System.out.print("El oponente esta tomando una seleccion");
-        try {
-            for (int i = 0; i < 3; i++) {
-                Thread.sleep(750);
-                System.out.print(".");
-            }
-            Thread.sleep(750);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+        for (int i = 0; i < 3; i++) {
+            esperar(500);
+            System.out.print(".");
         }
+        esperar(750);
         System.out.println();
     }
+
     /**
      * El computador realiza una accion en su turno
      */
@@ -37,31 +36,44 @@ public class Computador extends Jugador {
         for (Carta carta : mazo) {
             if (Juego.jugarCarta(carta)) {
                 mazo.remove(carta);
-                System.out.println("El oponente ha jugado la carta: " + carta.getColor() + carta.getTipo());
-                try {
-                    Thread.sleep(1500);
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
+                System.out.println(getNombre() + " ha jugado la carta: " + carta.getColor() + carta.getTipo());
+                esperar(1500);
                 return;
             }
         }
-        System.out.println("El oponente no tiene cartas para jugar");
-        try {
-            Thread.sleep(1500);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+        System.out.println(getNombre() + " no tiene cartas para jugar");
+        esperar(1500);
+
+        ArrayList<Carta> cartasAgregadas = Juego.darCartas(this);
+        if (cartasAgregadas.size() == 1) {
+            if (Juego.jugarCarta(cartasAgregadas.get(0))) {
+                Carta cartaTomada = cartasAgregadas.get(0);
+                mazo.remove(cartaTomada);
+                System.out.println(getNombre() + " tomo una carta, y la pudo jugar, la carta fue: " + cartaTomada.getColor() + cartaTomada.getTipo());
+                esperar(1500);
+                return;
+            }
+            System.out.println(getNombre() + " no pudo jugar la carta que tomo");
+            esperar(1500);
         }
-        Juego.darCartas(this);
     }
+
     /**
      * El computador canta Uno
-     * 
+     *
      * @return true
      */
     @Override
     public boolean cantarUno() {
         System.out.println("El COMPUTADOR CANTO UNO!");
         return true;
+    }
+
+    private void esperar(int tiempo) {
+        try {
+            Thread.sleep(tiempo);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

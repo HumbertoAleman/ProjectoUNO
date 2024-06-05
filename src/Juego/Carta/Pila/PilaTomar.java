@@ -10,6 +10,7 @@ import Juego.Carta.Comodin.CartaMasCuatro;
 import Juego.Controlador.Juego;
 import Juego.Jugador.Jugador;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
@@ -65,12 +66,15 @@ public class PilaTomar {
      * @param jugador un jugador
      * @param n       numero de cartas a tomar
      */
-    public void tomarCartas(Jugador jugador, int n) {
+    public ArrayList<Carta> tomarCartas(Jugador jugador, int n) {
+        ArrayList<Carta> listaRetornar = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             if (listaCartas.isEmpty()) listaCartas.addAll(Juego.getCartasPorDebajo());
             Carta carta = tomarCarta();
             jugador.agregarCarta(carta);
+            listaRetornar.add(carta);
         }
+        return listaRetornar;
     }
 
     /**
@@ -83,12 +87,11 @@ public class PilaTomar {
             tomarCartas(jugador, 7);
     }
 
-    //Esta funcion es usada unicamente al cargar
+    /**
+     * Metodo usado para agregar una carta a la lista
+     * @param carta La carta a agregar
+     */
     public void agregarCarta(Carta carta){
         listaCartas.add(carta);
-    }
-
-    public void revertirCartas(){
-        Collections.reverse(listaCartas);
     }
 }

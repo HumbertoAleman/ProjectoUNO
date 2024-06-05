@@ -3,6 +3,7 @@ package Juego.Jugador;
 import Juego.Carta.Carta;
 import Juego.Controlador.Juego;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Humano extends Jugador {
@@ -15,6 +16,7 @@ public class Humano extends Jugador {
         super(nombre);
         tipo = "H";
     }
+
     /**
      * El jugador realiza una accion en su turno
      */
@@ -35,7 +37,7 @@ public class Humano extends Jugador {
             System.out.println();
 
             System.out.print("Escriba la carta a jugar: ");
-            seleccion = scanner.nextLine();
+            seleccion = scanner.nextLine().toUpperCase();
 
             // Esta linea existe porque por alguna razon si usamos una variable dentro de una lamda function
             // tiene que ser de esta manera
@@ -44,7 +46,32 @@ public class Humano extends Jugador {
         }
 
         if (seleccion.equals("T")) {
-            Juego.darCartas(this);
+            ArrayList<Carta> cartasAgregadas = Juego.darCartas(this);
+            if (cartasAgregadas.size() == 1) {
+                Carta cartaTomada = cartasAgregadas.get(0);
+                while (!seleccion.equals("S") && !seleccion.equals("N")) {
+                    System.out.println("La carta tomada fue ");
+                    System.out.println("+---+");
+                    ImpresoraCarta.imprimirCuerpoCarta(cartaTomada, true);
+                    System.out.println();
+                    System.out.println("+---+");
+                    System.out.println();
+                    System.out.println("Desea jugar esta carta?");
+                    System.out.println("S. Si");
+                    System.out.println("N. No");
+                    System.out.println();
+                    System.out.print("Seleccion ");
+                    seleccion = scanner.nextLine().toUpperCase();
+                }
+
+                if (seleccion.equals("N")) return;
+
+                if (Juego.jugarCarta(cartaTomada)) {
+                    System.out.println("Si se pudo jugar la carta tomada");
+                    mazo.remove(cartaTomada);
+                } else System.out.println("No se pudo jugar la carta tomada");
+                return;
+            }
             return;
         }
 
@@ -54,6 +81,7 @@ public class Humano extends Jugador {
 
     //Calcula el tiempo desde que se ejecuta la funcion hasta que se recibe la entrada del usuario
     //Si es menor a 3 segundos es considerado valido y retorna true
+
     /**
      * Le da 3 segundos al jugador para cantar uno, sino agarrara cartas
      *
@@ -63,11 +91,15 @@ public class Humano extends Jugador {
         Scanner scanner = new Scanner(System.in);
         long tiempoInicio = System.currentTimeMillis();
         System.out.println("Es momento de cantar UNO!\nPresiona la tecla U y ENTER rapido!");
-        if (scanner.nextLine().equals("U")) {
+        if (scanner.nextLine().equalsIgnoreCase("U")) {
             long tiempoFinal = System.currentTimeMillis();
-            return (tiempoFinal - tiempoInicio) <= 3000;
+            if (tiempoFinal - tiempoInicio <= 3000) {
+                System.out.println("No presionaste la tecla a tiempo :(");
+                return false;
+            }
+            return true;
         } else {
-            System.out.println("No lo hiciste a tiempo :(");
+            System.out.println("Ingresaste la letra incorrecta :(");
             return false;
         }
     }

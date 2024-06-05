@@ -10,6 +10,7 @@ import Juego.Jugador.Jugadores;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -94,9 +95,10 @@ public class Juego {
      *
      * @param jugador un jugador
      */
-    public static void darCartas(Jugador jugador) {
-        pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
+    public static ArrayList<Carta> darCartas(Jugador jugador) {
+        ArrayList<Carta> listaRetornar = pilaTomar.tomarCartas(jugador, cartasATomar == 0 ? 1 : cartasATomar);
         cartasATomar = 0;
+        return listaRetornar;
     }
 
     private static PilaJugar pilaJugar;
@@ -232,7 +234,7 @@ public class Juego {
             try {
                 Thread.sleep(3000);
             } catch (Exception sleepError) {
-                System.err.println(sleepError.getMessage());;
+                System.err.println(sleepError.getMessage());
             }
             // limpiarConsola();
         }
@@ -240,8 +242,16 @@ public class Juego {
         int cartas = listaJugadores.getNumCartasJugadorActual();
 
         if (cartas == 1) {
-            if(!listaJugadores.getJugadorActual().cantarUno() || listaJugadores.getJugadorActual().getCarta() instanceof CartaComodin){
+            if (listaJugadores.getJugadorActual().getCarta() instanceof CartaComodin) {
+                System.out.println("No se puede ganar con un comodin, estas obligado a tomar una carta...");
+                try {
+                    Thread.sleep(1500);
+                } catch (Exception sleepError) {
+                    System.err.println(sleepError.getMessage());
+                }
                 pilaTomar.tomarCartas(listaJugadores.getJugadorActual(),1);
+            } else if(!listaJugadores.getJugadorActual().cantarUno()){
+                pilaTomar.tomarCartas(listaJugadores.getJugadorActual(),7);
             }
         } else if (cartas == 0) {
             System.out.println("HA GANADO : " + listaJugadores.getJugadorActual().getNombre());
