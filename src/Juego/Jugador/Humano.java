@@ -100,7 +100,7 @@ public class Humano extends Jugador {
         System.out.println("Es momento de cantar UNO!\nPresiona la tecla U y ENTER rapido!");
         if (scanner.nextLine().equalsIgnoreCase("U")) {
             long tiempoFinal = System.currentTimeMillis();
-            if (tiempoFinal - tiempoInicio <= 3000) {
+            if (tiempoFinal - tiempoInicio >= 3000) {
                 System.out.println("No presionaste la tecla a tiempo :(");
                 return false;
             }
