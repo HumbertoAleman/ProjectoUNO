@@ -75,7 +75,7 @@ public interface Cargador {
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     static Jugadores cargarJugadores() throws IOException, ParseException {
-        JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/listaJugadores.json");
+        JSONObject objeto = fromPathToJSONObject("listaJugadores.json");
         JSONArray listaJugadoresJson = (JSONArray) objeto.get("listaJugadores");
 
         Jugadores listaJugadores = new Jugadores();
@@ -106,7 +106,7 @@ public interface Cargador {
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     static PilaTomar cargarPilaTomar() throws IOException, ParseException {
-        JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/pilaTomar.json");
+        JSONObject objeto = fromPathToJSONObject("pilaTomar.json");
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
 
         PilaTomar pilaTomar = new PilaTomar();
@@ -123,7 +123,7 @@ public interface Cargador {
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     static PilaJugar cargarPilaJugar() throws IOException, ParseException {
-        JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/pilaJugar.json");
+        JSONObject objeto = fromPathToJSONObject("pilaJugar.json");
         JSONArray listaCartas = (JSONArray) objeto.get("listaCartas");
 
         PilaJugar pilaJugar = new PilaJugar();
@@ -140,7 +140,7 @@ public interface Cargador {
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     static boolean cargarSaltarTurno() throws IOException, ParseException {
-        JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/juego.json");
+        JSONObject objeto = fromPathToJSONObject("juego.json");
         return (boolean) objeto.get("saltarTurno");
     }
 
@@ -151,7 +151,7 @@ public interface Cargador {
      * @throws ParseException Sera lanzada si hay un error transformando el json en objeto
      */
     static int cargarCartasAtomar() throws IOException, ParseException {
-        JSONObject objeto = fromPathToJSONObject("src/Juego/Controlador/juego.json");
+        JSONObject objeto = fromPathToJSONObject("juego.json");
         return (int) (long) objeto.get("cartasATomar");
     }
 }

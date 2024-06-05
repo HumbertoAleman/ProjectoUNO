@@ -30,25 +30,25 @@ public interface Guardador {
         pilaJugarGuardar = gson.toJson(pilaJugar);
         pilaTomarGuardar = gson.toJson(pilaTomar);
 
-        FileWriter FWJugadores = new FileWriter("src/Juego/Controlador/listaJugadores.json");
+        FileWriter FWJugadores = new FileWriter("listaJugadores.json");
         StringWriter SWJugadores = new StringWriter();
         SWJugadores.write(listaJugadoresGuardar);
         FWJugadores.write(SWJugadores.toString());
         FWJugadores.close();
 
-        FileWriter FWPilaJugar = new FileWriter("src/Juego/Controlador/pilaJugar.json");
+        FileWriter FWPilaJugar = new FileWriter("pilaJugar.json");
         StringWriter SWPilaJugar = new StringWriter();
         SWPilaJugar.write(pilaJugarGuardar);
         FWPilaJugar.write(SWPilaJugar.toString());
         FWPilaJugar.close();
 
-        FileWriter FWPilaTomar = new FileWriter("src/Juego/Controlador/pilaTomar.json");
+        FileWriter FWPilaTomar = new FileWriter("pilaTomar.json");
         StringWriter SWPilaTomar = new StringWriter();
         SWPilaTomar.write(pilaTomarGuardar);
         FWPilaTomar.write(SWPilaTomar.toString());
         FWPilaTomar.close();
 
-        FileWriter FWJuego = new FileWriter("src/Juego/Controlador/juego.json");
+        FileWriter FWJuego = new FileWriter("juego.json");
         StringWriter SWJuego = new StringWriter();
         juegoGuardar  = String.format("{\"saltarTurno\":%b, \"cartasATomar\":%o }", saltarTurno, cartasATomar);
         SWJuego.write(juegoGuardar);
