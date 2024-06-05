@@ -55,9 +55,11 @@ public class Jugadores {
     }
     /**
      * El jugador actual toma turno
+     *
+     * @return Retorna si el jugador va a salir al menu principal
      */
-    public void jugadorActualTurno() {
-        listaJugadores.get(index).tomarTurno();
+    public boolean jugadorActualTurno() {
+        return listaJugadores.get(index).tomarTurno();
     }
     /**
      * Cambia el turno al siguiente jugador

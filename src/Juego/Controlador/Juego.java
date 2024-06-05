@@ -250,7 +250,8 @@ public class Juego {
             }
             // limpiarConsola();
         }
-        listaJugadores.jugadorActualTurno();
+        if (!listaJugadores.jugadorActualTurno())
+            return false;
         int cartas = listaJugadores.getNumCartasJugadorActual();
 
         if (cartas == 1) {

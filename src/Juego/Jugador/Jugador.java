@@ -67,6 +67,8 @@ public abstract class Jugador {
         }
         /**
          * Toma el turno del jugador
+         *
+         * @return Retorna si el jugador tomo la decision de regresar al menu principal
          */
-        public abstract void tomarTurno();
+        public abstract boolean tomarTurno();
 }

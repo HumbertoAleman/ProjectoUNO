@@ -29,16 +29,18 @@ public class Computador extends Jugador {
 
     /**
      * El computador realiza una accion en su turno
+     *
+     * @return Siempre retorna true
      */
     @Override
-    public void tomarTurno() {
+    public boolean tomarTurno() {
         mostrarTomarDecision();
         for (Carta carta : mazo) {
             if (Juego.jugarCarta(carta)) {
                 mazo.remove(carta);
                 System.out.println(getNombre() + " ha jugado la carta: " + carta.getColor() + carta.getTipo());
                 esperar(1500);
-                return;
+                return true;
             }
         }
         System.out.println(getNombre() + " no tiene cartas para jugar");
@@ -51,11 +53,12 @@ public class Computador extends Jugador {
                 mazo.remove(cartaTomada);
                 System.out.println(getNombre() + " tomo una carta, y la pudo jugar, la carta fue: " + cartaTomada.getColor() + cartaTomada.getTipo());
                 esperar(1500);
-                return;
+                return true;
             }
             System.out.println(getNombre() + " no pudo jugar la carta que tomo");
             esperar(1500);
         }
+        return true;
     }
 
     /**
