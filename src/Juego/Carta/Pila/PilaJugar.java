@@ -34,10 +34,12 @@ public class PilaJugar {
      * Muestra la carta en el tope de la pila de jugar
      */
     public void mostrarCartaTope() {
+        System.out.println("-----------------------------------------------------------");
         System.out.println("+---+");
         ImpresoraCarta.imprimirCuerpoCarta(listaCartas.peek(), true);
         System.out.println();
         System.out.println("+---+");
+        System.out.println("-----------------------------------------------------------");
     }
 
     /**

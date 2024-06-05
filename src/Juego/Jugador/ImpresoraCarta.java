@@ -60,5 +60,7 @@ public interface ImpresoraCarta {
                 System.out.print("+---+    ");
             System.out.println();
         }
+        System.out.println();
+        System.out.println("-----------------------------------------------------------");
     }
 }
