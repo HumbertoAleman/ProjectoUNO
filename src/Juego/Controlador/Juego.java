@@ -124,6 +124,8 @@ public class Juego {
      */
     public static void mostrarMenu() {
         System.out.println("----------------------------------");
+        System.out.format("| %-30s |%n", "UNO");
+        System.out.format("| %30s |%n", "");
         System.out.format("| %4s %25s |%n", "1.", "Comenzar juego");
         System.out.format("| %4s %25s |%n", "2.", "Cargar juego");
         System.out.format("| %30s |%n", "");
